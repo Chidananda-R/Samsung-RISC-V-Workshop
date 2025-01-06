@@ -134,6 +134,17 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 ![VSD Squadron Board Power Supply](https://github.com/user-attachments/assets/284cc06e-89f3-4205-a7f5-4f63055be284)
 </details>
 
+<details>
+  <summary>Lab Session 1:- Understood the basics of RISC-V And Openlane</summary>
+  
+  ![day1](https://github.com/user-attachments/assets/237d2b91-e75c-47d9-b430-3112beb819d6)
+
+</details>
+
+<details>
+  <summary>Task 1:-</summary>
+</details>
+
 
 
 
