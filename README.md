@@ -148,7 +148,7 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 </details>
 
 <details>
-  <summary><h3>Lab Session 1:-</h3> Understood the basics of RISC-V And Openlane</summary>
+  <summary><h3>Lab Session 1:-</h3> Understood the basics of RISC-V </summary>
 
   ![multiply](https://github.com/user-attachments/assets/0e1aa642-58a3-4be2-8ac0-bc12ec7c9e75)
 
