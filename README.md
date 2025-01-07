@@ -155,7 +155,7 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 </details>
 
 <details>
-  <summary> <h3> Task 1</h3></summary>
+  <summary> <h3> Task 1: Install the RISC-V tool by setting up a Virtual Machine in Oracle Virtual Box. Converting C programs to RISC-V Architecture</h3></summary>
   
   Installing RISC-V toolchain in Virtual Box
   
@@ -179,14 +179,6 @@ Running in Ofast Option in Riscv Architecture
 
 ![fast](https://github.com/user-attachments/assets/1a9418b0-64c3-4e04-ba3f-e01a68a77272)
 ![Verifying fast with calci](https://github.com/user-attachments/assets/111056ce-e31e-475d-8e5a-c24c6848928f)
-
-
-
-
-
-
-
-
 
 </details>
 
