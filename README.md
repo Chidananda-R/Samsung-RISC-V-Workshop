@@ -149,8 +149,28 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 
 <details>
   <summary><h3>Lab Session 1:-</h3> Understood the basics of RISC-V And Openlane</summary>
-  
-  ![day1](https://github.com/user-attachments/assets/237d2b91-e75c-47d9-b430-3112beb819d6)
+
+  ![multiply](https://github.com/user-attachments/assets/0e1aa642-58a3-4be2-8ac0-bc12ec7c9e75)
+
+   ![day1](https://github.com/user-attachments/assets/237d2b91-e75c-47d9-b430-3112beb819d6)
+
+  ![lab1](https://github.com/user-attachments/assets/67232ca4-bcba-4cbe-8244-60f3405be021)
+
+  ![Day1 1](https://github.com/user-attachments/assets/b1e43809-7b39-49eb-ac7c-2b8ce267e267)
+
+  ![floor plan](https://github.com/user-attachments/assets/4bcff685-8d4e-4f84-933e-e1a106c64b11)
+
+  ![cts](https://github.com/user-attachments/assets/3ef04f1b-cde9-4b9a-bf3d-2c13f8990a96)
+
+  ![placement analysis](https://github.com/user-attachments/assets/fef565cc-1110-4d28-8df1-d7c44f9b5015)
+
+  ![routing](https://github.com/user-attachments/assets/1a84ba9a-4e87-4610-816f-f838355a561d)
+
+
+
+
+
+
 
 </details>
 
