@@ -9,7 +9,9 @@ Basic Details
 
 <b>Email ID:</b> chidanandar9686@gmail.com
 
-<b>GitHub Profile:</b> 
+<b>GitHub Profile:</b> Chidananda-R
+
+<b>LinkedIN Profile:</b> Chidananda R
 
 
 <details>
