@@ -143,6 +143,34 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 
 <details>
   <summary>Task 1:-</summary>
+  Installing RISC-V toolchain in Virtual Box
+  ![Virtual Box for VSD Workshop](https://github.com/user-attachments/assets/122fd97f-a7de-44ca-9cb1-8c6c37d82dd7)
+  ![Virtual Box](https://github.com/user-attachments/assets/fa4f8a61-2f72-4dc9-a8b3-f152024b2dd8)
+
+  Creating a simple program in C to find sum of n numbers
+
+  ![sum1ton_command](https://github.com/user-attachments/assets/f5cf99bd-c3a0-4aa5-b7d6-fe94f8c5ef47)
+![writing c program](https://github.com/user-attachments/assets/c77cc4f4-d89d-49b2-830f-db1bd409e40e)
+
+Main Function in RISCV Architecture
+
+![riscv codes](https://github.com/user-attachments/assets/6f704b6a-a984-44c4-b6c6-6ecd24f75c11)
+![main prg](https://github.com/user-attachments/assets/11d91534-fef6-40db-8247-baeac45173f7)
+![verifying using calculator](https://github.com/user-attachments/assets/0e25064f-d6d2-4548-8544-1ea0e6a38a3d)
+
+Running in Ofast Option in Riscv Architecture
+
+![fast](https://github.com/user-attachments/assets/1a9418b0-64c3-4e04-ba3f-e01a68a77272)
+![Verifying fast with calci](https://github.com/user-attachments/assets/111056ce-e31e-475d-8e5a-c24c6848928f)
+
+
+
+
+
+
+
+
+
 </details>
 
 
