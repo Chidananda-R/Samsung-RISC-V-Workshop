@@ -170,7 +170,7 @@ cts
 
   ![cts](https://github.com/user-attachments/assets/3ef04f1b-cde9-4b9a-bf3d-2c13f8990a96)
   
-Placemnt Analysis
+Placement Analysis
 
   ![placement analysis](https://github.com/user-attachments/assets/fef565cc-1110-4d28-8df1-d7c44f9b5015)
   
