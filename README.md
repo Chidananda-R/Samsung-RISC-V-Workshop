@@ -142,7 +142,7 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 </details>
 
 <details>
-  <summary> <h3> Task 1:-</h3></summary>
+  <summary> <h3> Task 1</h3></summary>
   
   Installing RISC-V toolchain in Virtual Box
   
