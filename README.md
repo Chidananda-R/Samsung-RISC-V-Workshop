@@ -2,7 +2,7 @@
 **The RISC-V Workshop, certified by Samsung and VLSI Design, offers an immersive hands-on experience in RISC-V architecture, under the expert guidance of Kunal Ghosh. The workshop leverages the VSD Squadron Mini Board, a RISC-V-based development platform, designed to provide participants with real-world exposure to the design, implementation, and optimization of RISC-V processors.**
 
 <details>
-<summary> STEPS TO SETUP LAB </summary>
+<summary><h3> STEPS TO SETUP LAB</h3> </summary>
 
 ![Virtual Box for VSD Workshop](https://github.com/user-attachments/assets/ea63fc96-788b-4694-9d87-ad76b39f49cc)
 ![Step1](https://github.com/user-attachments/assets/840f4d2c-aff1-4262-a966-e83a91c9811b)
@@ -23,7 +23,7 @@
 
 
 <details>
-<summary> VSDSquadron Mini RISC-V Development Board </summary>
+<summary> <h3>VSDSquadron Mini RISC-V Development Board</h3> </summary>
 
 
 The VSDSquadron Mini RISC-V Development Board is a powerful yet compact embedded system platform designed to give developers an efficient and flexible environment for working with RISC-V based applications. Powered by the CH32V003F4U6 chip, this development board is optimized for high-performance computing tasks, supporting versatile peripherals and communication protocols.
@@ -135,17 +135,21 @@ These dimensions provide a versatile form factor, allowing you to easily integra
 </details>
 
 <details>
-  <summary>Lab Session 1:- Understood the basics of RISC-V And Openlane</summary>
+  <summary><h3>Lab Session 1:-</h3> Understood the basics of RISC-V And Openlane</summary>
   
   ![day1](https://github.com/user-attachments/assets/237d2b91-e75c-47d9-b430-3112beb819d6)
 
 </details>
 
 <details>
-  <summary>Task 1:-</summary>
+  <summary> <h3> Task 1:-</h3></summary>
+  
   Installing RISC-V toolchain in Virtual Box
-  ![Virtual Box for VSD Workshop](https://github.com/user-attachments/assets/122fd97f-a7de-44ca-9cb1-8c6c37d82dd7)
-  ![Virtual Box](https://github.com/user-attachments/assets/fa4f8a61-2f72-4dc9-a8b3-f152024b2dd8)
+  
+  ![Virtual Box for VSD Workshop](https://github.com/user-attachments/assets/e005aec7-3a2f-4b31-9798-eff27cef1dab)
+  ![Virtual Box](https://github.com/user-attachments/assets/337daef5-02f4-448c-990e-fe6154a10b04)
+
+
 
   Creating a simple program in C to find sum of n numbers
 
