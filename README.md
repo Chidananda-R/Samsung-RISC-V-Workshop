@@ -1,7 +1,7 @@
 # Samsung-RISC-V-Workshop
 **The RISC-V Workshop, certified by Samsung and VLSI Design, offers an immersive hands-on experience in RISC-V architecture, under the expert guidance of Kunal Ghosh. The workshop leverages the VSD Squadron Mini Board, a RISC-V-based development platform, designed to provide participants with real-world exposure to the design, implementation, and optimization of RISC-V processors.**
 
-Basic Details
+<b>Basic Details</b>
 
 <b>Name:</b> Chidananda R
 
