@@ -179,11 +179,6 @@ Routing
   ![routing](https://github.com/user-attachments/assets/1a84ba9a-4e87-4610-816f-f838355a561d)
 
 
-
-
-
-
-
 </details>
 
 <details>
@@ -213,6 +208,13 @@ Running in Ofast Option in Riscv Architecture
 ![Verifying fast with calci](https://github.com/user-attachments/assets/111056ce-e31e-475d-8e5a-c24c6848928f)
 
 </details>
+
+<details>
+  <summary> <h3> Task 2:</h3> Writing a simple c program and compiling it using RISC_V GCC/SPIKE and collecting the RISC_V object dump for both -O1 and -Ofast</summary>
+  
+</details>
+
+
 
 
 
