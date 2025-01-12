@@ -210,7 +210,7 @@ Running in Ofast Option in Riscv Architecture
 </details>
 
 <details>
-  <summary> <h3> Task 2:</h3> Writing a simple c program and compiling it using RISC_V GCC/SPIKE and collecting the RISC_V object dump for both -O1 and -Ofast</summary>
+  <summary> <h3> Task 2: </h3> Writing a simple c program and compiling it using RISCV GCC/SPIKE and collecting the RISCV object dump for both -O1 and -Ofast </summary>
   
 
   Main function of Sum of n numbers in -Ofast Option in RISCV64:
