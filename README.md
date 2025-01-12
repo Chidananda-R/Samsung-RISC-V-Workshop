@@ -211,7 +211,41 @@ Running in Ofast Option in Riscv Architecture
 
 <details>
   <summary> <h3> Task 2:</h3> Writing a simple c program and compiling it using RISC_V GCC/SPIKE and collecting the RISC_V object dump for both -O1 and -Ofast</summary>
-  
+
+  Main function of Sum of n numbers in -Ofast Option in RISCV64:
+
+  ![Main function to find sum of n no in Ofast](https://github.com/user-attachments/assets/5b97ee62-c985-42ec-a399-425943b62743)
+
+  Debugging   Sum of n numbers in -Ofast in SPIKE:
+
+  ![Running and debugging addition of n no using spike ](https://github.com/user-attachments/assets/cf7da192-6de5-4922-bb6b-8484523faa30)
+
+  Simple C Program to find Product of n numbers:
+
+  ![c program to find product of n numbers](https://github.com/user-attachments/assets/eac9441a-22c4-4e19-9023-8a17a9165192)
+
+  Main function of product of n numbers in -O1 Option in RISCV64:
+
+  ![Main function -o1 for product of n no](https://github.com/user-attachments/assets/77de1ecf-3967-46be-a4a5-495109d06ceb)
+
+  Debugging product of n numbers in -O1 in SPIKE:
+
+  ![debugging -O1 for product of n no  in SPIKE](https://github.com/user-attachments/assets/d4aba074-15a2-4d32-bc13-62cc44a3279d)
+
+  Main Function of product of n numbers in -Ofast Option in RISCV64:
+
+  ![Main function for product of n no  in Ofast](https://github.com/user-attachments/assets/bdc12022-fbb4-40ea-9ddc-81b42dfe956a)
+
+  Debugging product of n numbers in -Ofast in SPIKE:
+
+  ![Debugging -Ofast in SPIKE](https://github.com/user-attachments/assets/fb34b077-ca26-4e5a-93f5-57b8d161febe)
+
+
+
+
+
+
+
 </details>
 
 
