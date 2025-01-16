@@ -1522,6 +1522,7 @@ This results in the machine code:
 
 The exact 32-bit instruction code for `bnez a5, 1018c` is **`0x010f0033`**.
 
+
 <h3> 20) addi gp,gp,-1780</h3>
 
 
