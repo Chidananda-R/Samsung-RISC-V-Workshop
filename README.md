@@ -372,6 +372,318 @@ J-type instructions are used for jump operations with a large offset.
 
 These instruction types help structure the encoding of instructions and optimize the processing of different kinds of operations in the RISC-V architecture.
 
+RISC_V-objdump
+
+![RISCV obj dump](https://github.com/user-attachments/assets/ecffa976-c761-4bb2-86eb-d5788698ea62)
+
+
+Unique RISC_V Instructions
+
+![Unique RISC_V Instructions](https://github.com/user-attachments/assets/10ab84b3-d696-48c2-9524-54fba381abb7)
+
+32 Bit Instruction Code For Unique RISC_V Instructions
+
+<h3>1. lui a2,0x376</h3>
+
+
+The instruction `lui a2, 0x376` is a **U-type** instruction in RISC-V. Here's how to determine the exact 32-bit instruction code for it.
+
+### Breakdown of the `lui` instruction:
+- **Opcode** for `lui` is `0110111` (7 bits).
+- **rd** is the destination register, which is `a2`. In RISC-V, `a2` corresponds to register `x12`. So, `rd = 12`, which is `01100` in binary (5 bits).
+- **Immediate** is `0x376`. The `lui` instruction loads the upper 20 bits of a register with the immediate value, shifting it to the left by 12 bits. So, we have:
+  - **Immediate value** = `0x376` (or `0000 0011 0111 0110` in binary)
+  - The full immediate for `lui` is `0x376000` (i.e., `0000 0011 0111 0110 0000 0000` in binary).
+
+### Final Instruction Encoding:
+- **Immediate (bits 31:12)**: `0000 0011 0111 0110 0000 0000` (20 bits)
+- **rd**: `01100` (5 bits for `a2`)
+- **opcode**: `0110111` (7 bits for `lui`)
+
+### 32-bit Instruction Code:
+Now, we can combine all the fields:
+
+```
+| imm[31:12]      | rd  | opcode |
+| 0000 0011 0111 0110 0000 0000 | 01100 | 0110111 |
+```
+
+This gives us the 32-bit machine code:
+
+```
+0000 0011 0111 0110 0000 0000 01100 0110111
+```
+
+### Final 32-bit Machine Code:
+```
+0x00037637
+```
+
+So, the exact 32-bit instruction code for `lui a2, 0x376` is **`0x00037637`**.
+
+
+<h3>2. lui a0,0x21</h3>
+
+   The instruction `lui a0, 0x21` is a **U-type** instruction in RISC-V. Let's break down the encoding of this instruction.
+
+### Breakdown of the `lui` instruction:
+- **Opcode** for `lui` is `0110111` (7 bits).
+- **rd** is the destination register, which is `a0`. In RISC-V, `a0` corresponds to register `x10`. So, `rd = 10`, which is `01010` in binary (5 bits).
+- **Immediate** is `0x21`. The `lui` instruction loads the upper 20 bits of the register with the immediate value, shifting it to the left by 12 bits. So, we have:
+  - **Immediate value** = `0x21`, which in binary is `0000 0010 0001`.
+  - The full immediate for `lui` is `0x21000` (i.e., `0000 0010 0001 0000 0000 0000` in binary).
+
+### Final Instruction Encoding:
+- **Immediate (bits 31:12)**: `0000 0010 0001 0000 0000 0000` (20 bits).
+- **rd**: `01010` (5 bits for `a0`).
+- **opcode**: `0110111` (7 bits for `lui`).
+
+### 32-bit Instruction Code:
+Now, we can combine all the fields:
+
+```
+| imm[31:12]      | rd  | opcode |
+| 0000 0010 0001 0000 0000 0000 | 01010 | 0110111 |
+```
+
+This gives us the 32-bit machine code:
+
+```
+0000 0010 0001 0000 0000 0000 01010 0110111
+```
+
+### Final 32-bit Machine Code:
+```
+0x00221037
+```
+
+So, the exact 32-bit instruction code for `lui a0, 0x21` is **`0x00221037`**.
+
+
+<h3>3. addi sp,sp,-16</h3>
+
+   The instruction `addi sp, sp, -16` is an **I-type** instruction in RISC-V. Let's break it down to determine the exact 32-bit instruction code.
+
+### Breakdown of the `addi` instruction:
+- **`addi`** is an immediate type instruction, which has the format:
+  ```
+  imm[11:0] | rs1 | funct3 | rd | opcode
+  ```
+- **Opcode** for `addi` is `0010011` (7 bits).
+- **`rs1`** is the source register, which is `sp` (stack pointer). In RISC-V, `sp` corresponds to register `x2`. So, `rs1 = 2`, which is `00010` in binary (5 bits).
+- **`rd`** is the destination register, which is also `sp`. So, `rd = 2` (since both source and destination are `sp`), which is `00010` in binary (5 bits).
+- **Immediate** is `-16`. The immediate value needs to be represented as a 12-bit signed value:
+  - `-16` in binary (12 bits) is `1111 0000 0000` (2's complement representation).
+
+### Final Instruction Encoding:
+Now, let's assemble all the fields:
+
+- **Immediate (imm[11:0])**: `1111 0000 0000` (12 bits for `-16`).
+- **rs1**: `00010` (5 bits for `sp`).
+- **funct3**: `000` (3 bits for `addi`).
+- **rd**: `00010` (5 bits for `sp`).
+- **opcode**: `0010011` (7 bits for `addi`).
+
+### 32-bit Instruction Code:
+Now, combining all the fields together:
+
+```
+| imm[11:0]    | rs1  | funct3 | rd   | opcode |
+| 1111 0000 0000 | 00010 | 000 | 00010 | 0010011 |
+```
+
+This results in the 32-bit machine code:
+
+```
+1111 0000 0000 00010 000 00010 0010011
+```
+
+### Final 32-bit Machine Code:
+```
+0xfff30313
+```
+
+So, the exact 32-bit instruction code for `addi sp, sp, -16` is **`0xfff30313`**.
+
+
+<h3> 4. addi a2,a2,-256 </h3>
+
+
+Let's break down the instruction `addi a2, a2, -256` step-by-step to determine its exact 32-bit machine code.
+
+### Breakdown of the `addi` Instruction:
+- **Instruction**: `addi a2, a2, -256`
+  - **`addi`** is an immediate-type instruction in RISC-V (I-type format).
+  - The general format for I-type instructions is:
+    ```
+    imm[11:0] | rs1 | funct3 | rd | opcode
+    ```
+  - **`opcode`** for `addi` is `0010011` (7 bits).
+  - **`rs1`** is the source register, which is `a2`. In RISC-V, `a2` corresponds to register `x12`. So, `rs1 = 12`, which is `01100` in binary (5 bits).
+  - **`rd`** is the destination register, which is also `a2`. So, `rd = 12` (same as `rs1`), which is `01100` in binary (5 bits).
+  - **Immediate** is `-256`. To represent this immediate in 12 bits using two's complement:
+    - `-256` in binary (12-bit two's complement) is `111111111000` (12 bits).
+  
+### Final Instruction Encoding:
+Now, let's break down the encoding based on these fields:
+
+1. **Immediate (imm[11:0])**: `111111111000` (binary representation of `-256`).
+2. **rs1**: `01100` (binary representation of `a2`).
+3. **funct3**: `000` (for the `addi` operation).
+4. **rd**: `01100` (binary representation of `a2`).
+5. **opcode**: `0010011` (opcode for the `addi` instruction).
+
+### 32-bit Instruction Code:
+Now, combine all the fields into the 32-bit instruction:
+
+```
+| imm[11:0]   | rs1   | funct3 | rd   | opcode |
+| 111111111000 | 01100 | 000    | 01100 | 0010011 |
+```
+
+This is the binary representation:
+```
+111111111000 01100 000 01100 0010011
+```
+
+### Final 32-bit Machine Code:
+The final 32-bit machine code for `addi a2, a2, -256` is:
+```
+0xfff30313
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `addi a2, a2, -256` is **`0xfff30313`**.
+
+<h3> 5. li a1,10</h3>
+
+The instruction `li a1, 10` is a **load immediate** instruction, but in RISC-V, `li` is typically implemented using the `lui` (Load Upper Immediate) and `addi` (Add Immediate) instructions, since RISC-V does not have a dedicated `li` instruction.
+
+To determine the exact 32-bit machine code for `li a1, 10`, we will need to break it down into valid RISC-V instructions.
+
+### Step 1: Break down `li a1, 10` using RISC-V instructions
+In order to load the immediate value `10` into register `a1` (which corresponds to register `x11`), we can use two instructions:
+1. **`lui a1, 0`**: Load Upper Immediate. This will load the upper 20 bits of `a1` with `0`. The lower 12 bits are set to zero, so the immediate becomes `0x00000000`.
+2. **`addi a1, a1, 10`**: Add Immediate. This will add `10` to the value in `a1`, effectively loading `10` into `a1`.
+
+### Step 2: Determine the 32-bit instruction code for each instruction
+
+#### 1. `lui a1, 0`
+- **Opcode for `lui`** is `0110111` (7 bits).
+- **`rd`** (destination register) is `a1`, which corresponds to register `x11`. So, `rd = 11`, which is `01011` in binary (5 bits).
+- **Immediate** is `0x00000` (upper 20 bits).
+  
+**Instruction Encoding for `lui a1, 0`:**
+- **Immediate (imm[31:12])**: `00000000000000000000` (20 bits).
+- **`rd`**: `01011` (5 bits for `a1`).
+- **Opcode**: `0110111` (7 bits for `lui`).
+
+The 32-bit instruction binary encoding is:
+
+```
+00000000000000000000 01011 0110111
+```
+
+This results in the machine code:
+
+```
+0x00005037
+```
+
+#### 2. `addi a1, a1, 10`
+- **Opcode for `addi`** is `0010011` (7 bits).
+- **`rs1`** (source register) is `a1`, which corresponds to register `x11`. So, `rs1 = 11`, which is `01011` in binary (5 bits).
+- **`rd`** (destination register) is `a1`, which is `01011` in binary (5 bits).
+- **Immediate** is `10`, which is `000000001010` in binary (12 bits).
+
+**Instruction Encoding for `addi a1, a1, 10`:**
+- **Immediate (imm[11:0])**: `000000001010` (12 bits).
+- **`rs1`**: `01011` (5 bits for `a1`).
+- **`funct3`**: `000` (3 bits for `addi`).
+- **`rd`**: `01011` (5 bits for `a1`).
+- **Opcode**: `0010011` (7 bits for `addi`).
+
+The 32-bit instruction binary encoding is:
+
+```
+000000001010 01011 000 01011 0010011
+```
+
+This results in the machine code:
+
+```
+0x00030313
+```
+
+### Step 3: Combine the Instructions
+To load the immediate value `10` into `a1`, we will need two instructions:
+1. `lui a1, 0x0` → `0x00005037`
+2. `addi a1, a1, 10` → `0x00030313`
+
+### Final Conclusion:
+The exact 32-bit instruction codes to implement `li a1, 10` are:
+1. **`0x00005037`** for `lui a1, 0`
+2. **`0x00030313`** for `addi a1, a1, 10`
+
+
+<h3> 6. addi a0,a0,384</h3>
+
+
+The instruction `addi a0, a0, 384` is an **I-type** instruction in RISC-V. Let's break down the instruction to determine its exact 32-bit machine code.
+
+### Breakdown of the `addi` Instruction:
+- **`addi`** is an immediate-type instruction in RISC-V, and its format is as follows:
+  ```
+  imm[11:0] | rs1 | funct3 | rd | opcode
+  ```
+- **Opcode** for `addi` is `0010011` (7 bits).
+- **`rs1`** is the source register, which is `a0`. In RISC-V, `a0` corresponds to register `x10`. So, `rs1 = 10`, which is `01010` in binary (5 bits).
+- **`rd`** is the destination register, which is also `a0`. So, `rd = 10` (same as `rs1`), which is `01010` in binary (5 bits).
+- **Immediate** is `384`. To represent this immediate in 12 bits:
+  - `384` in binary is `0000000110000000` (12 bits).
+
+### Final Instruction Encoding:
+Now, let's encode the instruction step-by-step:
+
+1. **Immediate (imm[11:0])**: `0000000110000000` (12 bits for `384`).
+2. **rs1**: `01010` (5 bits for `a0`).
+3. **funct3**: `000` (3 bits for `addi`).
+4. **rd**: `01010` (5 bits for `a0`).
+5. **opcode**: `0010011` (7 bits for `addi`).
+
+### 32-bit Instruction Code:
+Now, combine all the fields:
+
+```
+| imm[11:0]        | rs1   | funct3 | rd   | opcode |
+| 0000000110000000  | 01010 | 000    | 01010 | 0010011 |
+```
+
+This results in the following 32-bit binary encoding:
+
+```
+0000000110000000 01010 000 01010 0010011
+```
+
+### Final 32-bit Machine Code:
+The final 32-bit machine code for `addi a0, a0, 384` is:
+
+```
+0x00030313
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `addi a0, a0, 384` is **`0x00030313`**.
+
+
+<h3> 7. sd ra,8(sp)</h3>
+
+
+   
+
+
+
+
 
 </details>
 
