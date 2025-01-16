@@ -252,7 +252,7 @@ Running in Ofast Option in Riscv Architecture
 
                                 
 
-  R,I,S,B,U and J Instruction Types
+ <h3> R,I,S,B,U and J Instruction Types</h3>
 
   In the RISC-V instruction set architecture (ISA), instructions are divided into various types based on their format. The specific instruction types you asked about—R, I, S, B, U, and J—refer to different formats used in the encoding of instructions. Here's a brief overview of each:
 
