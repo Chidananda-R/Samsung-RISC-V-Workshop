@@ -372,7 +372,7 @@ J-type instructions are used for jump operations with a large offset.
 
 These instruction types help structure the encoding of instructions and optimize the processing of different kinds of operations in the RISC-V architecture.
 
-RISC_V-objdump
+<h3>RISC_V-objdump</h3>
 
 ![RISCV obj dump](https://github.com/user-attachments/assets/ecffa976-c761-4bb2-86eb-d5788698ea62)
 
@@ -381,9 +381,9 @@ Unique RISC_V Instructions
 
 ![Unique RISC_V Instructions](https://github.com/user-attachments/assets/10ab84b3-d696-48c2-9524-54fba381abb7)
 
-32 Bit Instruction Code For Unique RISC_V Instructions
+<h3>32 Bit Instruction Code For Unique RISC_V Instructions</h3>
 
-<h3>1. lui a2,0x376</h3>
+<h3>1) lui a2,0x376</h3>
 
 
 The instruction `lui a2, 0x376` is a **U-type** instruction in RISC-V. Here's how to determine the exact 32-bit instruction code for it.
@@ -422,7 +422,7 @@ This gives us the 32-bit machine code:
 So, the exact 32-bit instruction code for `lui a2, 0x376` is **`0x00037637`**.
 
 
-<h3>2. lui a0,0x21</h3>
+<h3>2) lui a0,0x21</h3>
 
    The instruction `lui a0, 0x21` is a **U-type** instruction in RISC-V. Let's break down the encoding of this instruction.
 
@@ -460,7 +460,7 @@ This gives us the 32-bit machine code:
 So, the exact 32-bit instruction code for `lui a0, 0x21` is **`0x00221037`**.
 
 
-<h3>3. addi sp,sp,-16</h3>
+<h3>3) addi sp,sp,-16</h3>
 
    The instruction `addi sp, sp, -16` is an **I-type** instruction in RISC-V. Let's break it down to determine the exact 32-bit instruction code.
 
@@ -506,7 +506,7 @@ This results in the 32-bit machine code:
 So, the exact 32-bit instruction code for `addi sp, sp, -16` is **`0xfff30313`**.
 
 
-<h3> 4. addi a2,a2,-256 </h3>
+<h3> 4) addi a2,a2,-256 </h3>
 
 
 Let's break down the instruction `addi a2, a2, -256` step-by-step to determine its exact 32-bit machine code.
@@ -555,7 +555,7 @@ The final 32-bit machine code for `addi a2, a2, -256` is:
 ### Conclusion:
 The exact 32-bit instruction code for `addi a2, a2, -256` is **`0xfff30313`**.
 
-<h3> 5. li a1,10</h3>
+<h3> 5) li a1,10</h3>
 
 The instruction `li a1, 10` is a **load immediate** instruction, but in RISC-V, `li` is typically implemented using the `lui` (Load Upper Immediate) and `addi` (Add Immediate) instructions, since RISC-V does not have a dedicated `li` instruction.
 
@@ -626,7 +626,7 @@ The exact 32-bit instruction codes to implement `li a1, 10` are:
 2. **`0x00030313`** for `addi a1, a1, 10`
 
 
-<h3> 6. addi a0,a0,384</h3>
+<h3> 6) addi a0,a0,384</h3>
 
 
 The instruction `addi a0, a0, 384` is an **I-type** instruction in RISC-V. Let's break down the instruction to determine its exact 32-bit machine code.
@@ -676,7 +676,7 @@ The final 32-bit machine code for `addi a0, a0, 384` is:
 The exact 32-bit instruction code for `addi a0, a0, 384` is **`0x00030313`**.
 
 
-<h3> 7. sd ra,8(sp)</h3>
+<h3> 7) sd ra,8(sp)</h3>
 
 The instruction `sd ra, 8(sp)` is a **S-type** instruction in RISC-V. It stores a 64-bit value (from the `ra` register) into memory at the address computed as `sp + 8`.
 
@@ -741,7 +741,7 @@ The exact 32-bit instruction code for the first `sd ra, 8(sp)` store instruction
 0x00010223
 ```
 
-<h3> 8. jal ra,1040c </h3>
+<h3> 8) jal ra,1040c </h3>
 
 The instruction `jal ra, 1040c` is a **J-type** instruction in RISC-V. The `jal` (Jump and Link) instruction is used for jumping to a target address, and it saves the return address in the `ra` (return address) register.
 
@@ -805,7 +805,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for `jal ra, 1040c` is **`0x000102ff`**.
 
-<h3> 9. ld ra,8(sp) </h3>
+<h3> 9) ld ra,8(sp) </h3>
 
 The instruction `ld ra, 8(sp)` is a **I-type** instruction in RISC-V for loading a 64-bit value from memory into the `ra` (return address) register. The `ld` instruction is used to load double words (64 bits).
 
@@ -862,7 +862,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for `ld ra, 8(sp)` is **`0x0003033f`**.
 
-<h3> 10. li a0,0 </h3>
+<h3> 10) li a0,0 </h3>
 
 The instruction `li a0, 0` is a **Load Immediate** instruction, but in RISC-V, there is no direct `li` instruction. Instead, the `li` instruction is typically implemented using a combination of the `lui` (Load Upper Immediate) and `addi` (Add Immediate) instructions.
 
@@ -919,7 +919,7 @@ Thus, the exact 32-bit machine code for `li a0, 0` is a combination of the two i
 
 Both instructions work together to set the value of `a0` to `0`.
 
-<h3> 11. addi sp,sp,16</h3>
+<h3> 11) addi sp,sp,16</h3>
 
 The instruction `addi sp, sp, 16` is an **I-type** instruction in RISC-V, where an immediate value is added to a register value and stored in another register.
 
@@ -977,7 +977,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for `addi sp, sp, 16` is **`0x00030313`**.
 
-<h3> 12. ret </h3>
+<h3> 12) ret </h3>
 
 The instruction `ret` in RISC-V is essentially a **JALR** (Jump and Link Register) instruction with a zero offset. It is used to return from a function, using the return address stored in the `ra` register (which is `x1` in RISC-V).
 
@@ -1033,7 +1033,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for the `ret` instruction in RISC-V is **`0x00008067`**.
 
-<h3> 13. auipc a5,0xffff0</h3>
+<h3> 13) auipc a5,0xffff0</h3>
 
 The instruction `auipc a5, 0xffff0` is an **U-type** instruction in RISC-V. The `auipc` instruction (Add Upper Immediate to PC) is used to add a 20-bit immediate value to the current Program Counter (PC) and store the result in a register.
 
@@ -1089,7 +1089,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for `auipc a5, 0xffff0` is **`0x0fff5073`**.
 
-<h3> 14. addi a5,a5,-224</h3>
+<h3> 14) addi a5,a5,-224</h3>
 
 
 The instruction `addi a5, a5, -224` is an **I-type** instruction in RISC-V. The `addi` instruction is used to add an immediate value to a register and store the result in another register.
@@ -1144,7 +1144,7 @@ This results in the machine code:
 ### Conclusion:
 The exact 32-bit instruction code for `addi a5, a5, -224` is **`0xfff30313`**.
 
-<h3> 15. beqz a5,100f8 </h3>
+<h3> 15) beqz a5,100f8 </h3>
 
 The instruction `beqz a5, 100f8` is a **B-type** instruction in RISC-V. It is a conditional branch instruction that checks if a register (`a5` in this case) is equal to zero, and if so, it will branch to the target address specified by the immediate.
 
