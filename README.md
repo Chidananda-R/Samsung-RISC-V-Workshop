@@ -249,6 +249,9 @@ Running in Ofast Option in Riscv Architecture
   <summary> <h3> Task 3: </h3> Review the RISC-V software documentation to understand the R, I, S, B, U, and J instruction types. Then, from the riscv-objdump output of your application code, identify 15 unique 
                                 RISC-V instructions and determine their exact 32-bit instruction codes in the respective formats.</summary>
 
+
+                                
+
   R,I,S,B,U and J Instruction Types
 
   In the RISC-V instruction set architecture (ISA), instructions are divided into various types based on their format. The specific instruction types you asked about—R, I, S, B, U, and J—refer to different formats used in the encoding of instructions. Here's a brief overview of each:
