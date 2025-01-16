@@ -246,7 +246,8 @@ Running in Ofast Option in Riscv Architecture
 
 <details>
 
-  <summary> <h3> Task 3: </h3> </summary>
+  <summary> <h3> Task 3: </h3> Review the RISC-V software documentation to understand the R, I, S, B, U, and J instruction types. Then, from the riscv-objdump output of your application code, identify 15 unique 
+                                RISC-V instructions and determine their exact 32-bit instruction codes in the respective formats.</summary>
 
   R,I,S,B,U and J Instruction Types
 
