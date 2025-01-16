@@ -678,6 +678,570 @@ The exact 32-bit instruction code for `addi a0, a0, 384` is **`0x00030313`**.
 
 <h3> 7. sd ra,8(sp)</h3>
 
+The instruction `sd ra, 8(sp)` is a **S-type** instruction in RISC-V. It stores a 64-bit value (from the `ra` register) into memory at the address computed as `sp + 8`.
+
+Let's break down the instruction step-by-step to determine the exact 32-bit instruction code. Since the `sd` instruction is for storing 64-bit data, it will be encoded as two 32-bit `store` instructions in RISC-V (one for each 32-bit half of the 64-bit value).
+
+### Breakdown of the `sd` Instruction:
+
+1. **`sd` (Store Double) Instruction**:
+   - **Opcode** for `sd` is `0100011` (7 bits) because it is a store instruction.
+   - **funct3** for `sd` is `011` (3 bits), which indicates that this is a store double (64-bit).
+   - **`rs1`** is the base register, which is `sp`. In RISC-V, `sp` corresponds to register `x2`. So, `rs1 = 2`, which is `00010` in binary (5 bits).
+   - **`rs2`** is the source register, which is `ra`. In RISC-V, `ra` corresponds to register `x1`. So, `rs2 = 1`, which is `00001` in binary (5 bits).
+   - **Immediate** is `8` (the offset from `sp`). The immediate value must be encoded as a 12-bit signed value. Since `8` is positive, its 12-bit representation is `000000001000`.
+
+### Encoding the First 32-bit Half:
+Since the `sd` instruction stores 64-bits, it will require two `store` instructions (one for the lower 32-bits and one for the upper 32-bits of the 64-bit value). 
+
+#### 1st `store` instruction (lower 32-bits):
+
+- **Immediate (imm[11:5])**: `0000000` (7 bits from the lower 7 bits of the immediate `8`).
+- **`rs2`** (value to store, `ra`): `00001` (5 bits for `x1`).
+- **`rs1`** (base register, `sp`): `00010` (5 bits for `x2`).
+- **funct3**: `011` (3 bits for `sd`).
+- **Immediate (imm[4:0])**: `01000` (5 bits for the lower 5 bits of the immediate `8`).
+- **Opcode**: `0100011` (7 bits for store instructions).
+
+So, the first instruction's 32-bit binary encoding is:
+
+```
+imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode
+0000000    | 00001 | 00010 | 011    | 01000    | 0100011
+```
+
+This gives us the binary instruction:
+
+```
+0000000 00001 00010 011 01000 0100011
+```
+
+This results in the machine code:
+
+```
+0x00010223
+```
+
+#### 2nd `store` instruction (upper 32-bits):
+The second store instruction will have the same format, but this time for the upper 32-bits of the 64-bit value. Since the `sd` instruction is storing a full 64-bit value, the offset is the same for both instructions, but we need to adjust the immediate for the second half of the 64-bit value.
+
+The second store instruction will have the same binary structure, but this time it’s still storing the same value at the same offset (`sp + 8`), but the encoding changes for the upper half (because it's part of a 64-bit store).
+
+The second instruction encoding should be similar:
+
+```
+0x00010223
+```
+
+### Final Conclusion:
+
+The exact 32-bit instruction code for the first `sd ra, 8(sp)` store instruction is:
+
+```
+0x00010223
+```
+
+<h3> 8. jal ra,1040c </h3>
+
+The instruction `jal ra, 1040c` is a **J-type** instruction in RISC-V. The `jal` (Jump and Link) instruction is used for jumping to a target address, and it saves the return address in the `ra` (return address) register.
+
+### Breakdown of the `jal` Instruction:
+- **Opcode** for `jal` is `1101111` (7 bits).
+- **rd** is the destination register where the return address will be stored. In this case, `rd` is `ra`, which corresponds to register `x1`. So, `rd = 1`, which is `00001` in binary (5 bits).
+- **Immediate** is the offset to the target address. The `jal` instruction uses a 20-bit signed immediate that represents the distance to jump from the current instruction.
+
+The immediate value `1040c` is given in hexadecimal, which is `0x1040c = 66,044` in decimal. This is the address offset to jump to.
+
+### Encoding the `jal` Instruction:
+1. **Immediate (20-bit offset)**:
+   The immediate for `jal` is a 20-bit signed immediate. The offset value needs to be split into specific fields:
+   - The offset is `1040c` (66,044 in decimal). This will be encoded in the 20-bit signed immediate field for `jal`.
+   
+   In binary, `1040c` is `0001 0000 0100 0000 1100`. When splitting into the appropriate bit fields for a `jal` instruction:
+   - `imm[20]` = 0 (bit 20)
+   - `imm[10:1]` = `0001000001` (bits 10-1)
+   - `imm[11]` = 0 (bit 11)
+   - `imm[19:12]` = `00000010` (bits 19-12)
+
+   The final bit representation for the immediate is:
+
+   ```
+   imm[20] | imm[10:1] | imm[11] | imm[19:12]
+   0       | 0001000001 | 0       | 00000010
+   ```
+
+2. **rd**: `ra` is the return address register, which corresponds to `x1`, so `rd = 1`, which is `00001` in binary (5 bits).
+
+3. **Opcode**: `jal` opcode is `1101111` (7 bits).
+
+### Putting It All Together:
+
+Now, combine the fields into a 32-bit instruction:
+
+```
+| imm[20] | imm[10:1]   | imm[11] | imm[19:12] | rd    | opcode |
+| 0       | 0001000001  | 0       | 00000010   | 00001 | 1101111 |
+```
+
+This gives the following 32-bit instruction binary:
+
+```
+0 0001000001 0 00000010 00001 1101111
+```
+
+### Final 32-bit Machine Code:
+Converting the binary into hexadecimal:
+
+```
+0000 0001 0000 0001 0000 0010 0000 0001 1101 1111
+```
+
+This results in the machine code:
+
+```
+0x000102ff
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `jal ra, 1040c` is **`0x000102ff`**.
+
+<h3> 9. ld ra,8(sp) </h3>
+
+The instruction `ld ra, 8(sp)` is a **I-type** instruction in RISC-V for loading a 64-bit value from memory into the `ra` (return address) register. The `ld` instruction is used to load double words (64 bits).
+
+Let's break down the `ld` instruction and determine its exact 32-bit machine code.
+
+### Breakdown of the `ld` Instruction:
+- **Opcode** for `ld` is `0000011` (7 bits), since it is a load instruction.
+- **funct3** for `ld` is `011` (3 bits), indicating that this is a load double word (64 bits).
+- **rs1** is the base register, which is `sp` (stack pointer). In RISC-V, `sp` corresponds to register `x2`. So, `rs1 = 2`, which is `00010` in binary (5 bits).
+- **rd** is the destination register, which is `ra`. In RISC-V, `ra` corresponds to register `x1`. So, `rd = 1`, which is `00001` in binary (5 bits).
+- **Immediate** is `8`, which is the offset from the base register `sp` (the memory address is `sp + 8`).
+
+### Instruction Encoding:
+The I-type instruction format is:
+```
+imm[11:0] | rs1 | funct3 | rd | opcode
+```
+
+Let's encode each part:
+
+1. **Immediate (imm[11:0])**: `8` in binary is `000000001000` (12 bits).
+2. **rs1**: `00010` (5 bits for `sp`).
+3. **funct3**: `011` (3 bits for `ld`).
+4. **rd**: `00001` (5 bits for `ra`).
+5. **opcode**: `0000011` (7 bits for `ld`).
+
+### 32-bit Instruction Encoding:
+Now, let's combine all the fields:
+
+```
+imm[11:0]   | rs1  | funct3 | rd   | opcode
+000000001000 | 00010 | 011    | 00001 | 0000011
+```
+
+This gives the following 32-bit instruction binary:
+
+```
+000000001000 00010 011 00001 0000011
+```
+
+### Final 32-bit Machine Code:
+Now, let's convert the binary encoding into hexadecimal:
+
+```
+0000 0000 1000 0001 1011 0000 0011
+```
+
+This results in the machine code:
+
+```
+0x0003033f
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `ld ra, 8(sp)` is **`0x0003033f`**.
+
+<h3> 10. li a0,0 </h3>
+
+The instruction `li a0, 0` is a **Load Immediate** instruction, but in RISC-V, there is no direct `li` instruction. Instead, the `li` instruction is typically implemented using a combination of the `lui` (Load Upper Immediate) and `addi` (Add Immediate) instructions.
+
+To load an immediate value of `0` into register `a0`, we can simply use the following two instructions:
+1. **`lui a0, 0`**: This will load the upper 20 bits of `a0` with `0`, effectively setting the upper 20 bits of `a0` to `0`.
+2. **`addi a0, a0, 0`**: This will add `0` to the value in `a0` (which is already `0` from the `lui` instruction), ensuring that `a0` remains `0`.
+
+### Step 1: Break down `lui a0, 0`
+
+#### `lui` (Load Upper Immediate) encoding:
+- **Opcode**: `0110111` (7 bits for `lui`).
+- **rd**: `a0`, which is `x10`. So, `rd = 10`, which is `01010` in binary (5 bits).
+- **Immediate**: `0x00000` (upper 20 bits are all zero).
+
+The instruction format for `lui` is:
+```
+| imm[31:12] | rd    | opcode |
+| 00000000000000000000 | 01010 | 0110111 |
+```
+
+This results in the 32-bit instruction:
+```
+0x00005037
+```
+
+### Step 2: Break down `addi a0, a0, 0`
+
+#### `addi` (Add Immediate) encoding:
+- **Opcode**: `0010011` (7 bits for `addi`).
+- **rs1**: `a0`, which corresponds to `x10`. So, `rs1 = 10`, which is `01010` in binary (5 bits).
+- **rd**: `a0`, which is `x10`. So, `rd = 10`, which is `01010` in binary (5 bits).
+- **Immediate**: `0` (12-bit signed immediate).
+
+The instruction format for `addi` is:
+```
+| imm[11:0] | rs1   | funct3 | rd   | opcode |
+| 000000000000 | 01010 | 000    | 01010 | 0010011 |
+```
+
+This results in the 32-bit instruction:
+```
+0x00030313
+```
+
+### Final Conclusion:
+To load the value `0` into `a0`, we need to use two instructions:
+
+1. **`lui a0, 0`**: `0x00005037`
+2. **`addi a0, a0, 0`**: `0x00030313`
+
+Thus, the exact 32-bit machine code for `li a0, 0` is a combination of the two instructions:
+- **`0x00005037`** for `lui a0, 0`
+- **`0x00030313`** for `addi a0, a0, 0`
+
+Both instructions work together to set the value of `a0` to `0`.
+
+<h3> 11. addi sp,sp,16</h3>
+
+The instruction `addi sp, sp, 16` is an **I-type** instruction in RISC-V, where an immediate value is added to a register value and stored in another register.
+
+Let's break down the instruction to determine its exact 32-bit machine code.
+
+### Breakdown of the `addi` Instruction:
+- **Opcode** for `addi` is `0010011` (7 bits).
+- **`rs1`** is the source register, which is `sp` (stack pointer). In RISC-V, `sp` corresponds to register `x2`. So, `rs1 = 2`, which is `00010` in binary (5 bits).
+- **`rd`** is the destination register, which is also `sp` in this case. So, `rd = 2`, which is `00010` in binary (5 bits).
+- **Immediate** is `16`. To represent this immediate in 12 bits:
+  - `16` in binary is `000000010000` (12 bits).
+
+### Instruction Encoding:
+The `addi` instruction format is:
+
+```
+imm[11:0] | rs1 | funct3 | rd | opcode
+```
+
+Now, let's encode the parts:
+- **Immediate (imm[11:0])**: `000000010000` (12 bits for `16`).
+- **rs1**: `00010` (5 bits for `sp`).
+- **funct3**: `000` (3 bits for `addi`).
+- **rd**: `00010` (5 bits for `sp`).
+- **opcode**: `0010011` (7 bits for `addi`).
+
+### Final Instruction Encoding:
+
+Now, combine all the fields into a 32-bit instruction:
+
+```
+| imm[11:0]   | rs1  | funct3 | rd   | opcode |
+| 000000010000 | 00010 | 000    | 00010 | 0010011 |
+```
+
+This gives the following 32-bit binary instruction:
+
+```
+000000010000 00010 000 00010 0010011
+```
+
+### Final 32-bit Machine Code:
+Now, let's convert the binary encoding into hexadecimal:
+
+```
+0000 0001 0000 0010 000 0001 0011
+```
+
+This results in the machine code:
+
+```
+0x00030313
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `addi sp, sp, 16` is **`0x00030313`**.
+
+<h3> 12. ret </h3>
+
+The instruction `ret` in RISC-V is essentially a **JALR** (Jump and Link Register) instruction with a zero offset. It is used to return from a function, using the return address stored in the `ra` register (which is `x1` in RISC-V).
+
+### Breakdown of the `ret` Instruction:
+- The `ret` instruction is equivalent to:
+  ```
+  jalr x0, 0(ra)
+  ```
+  Where `x0` is the destination register (which discards the return address), `ra` is the base register containing the return address, and the immediate offset is `0`.
+  
+  In other words, the instruction does the following:
+  - It jumps to the address stored in `ra` (the return address register) with an offset of `0`, effectively returning from the function.
+
+### RISC-V JALR (Jump and Link Register) Encoding:
+The `jalr` instruction is an I-type instruction with the following format:
+```
+imm[11:0] | rs1  | funct3 | rd   | opcode
+```
+
+For `jalr x0, 0(ra)`:
+- **Opcode** for `jalr` is `1100111` (7 bits).
+- **`rs1`** is `ra`, which corresponds to register `x1`. So, `rs1 = 1`, which is `00001` in binary (5 bits).
+- **`rd`** is `x0`, which corresponds to register `x0`. So, `rd = 0`, which is `00000` in binary (5 bits).
+- **Immediate** is `0`, which is encoded as `000000000000` (12 bits).
+
+### Final Instruction Encoding:
+Now, we can assemble the 32-bit instruction:
+
+```
+| imm[11:0] | rs1   | funct3 | rd    | opcode |
+| 000000000000 | 00001 | 000    | 00000 | 1100111 |
+```
+
+This gives the following 32-bit binary encoding:
+
+```
+000000000000 00001 000 00000 1100111
+```
+
+### Final 32-bit Machine Code:
+Converting the binary encoding to hexadecimal:
+
+```
+0000 0000 0000 0001 000 0000 1100 1111
+```
+
+This results in the machine code:
+
+```
+0x00008067
+```
+
+### Conclusion:
+The exact 32-bit instruction code for the `ret` instruction in RISC-V is **`0x00008067`**.
+
+<h3> 13. auipc a5,0xffff0</h3>
+
+The instruction `auipc a5, 0xffff0` is an **U-type** instruction in RISC-V. The `auipc` instruction (Add Upper Immediate to PC) is used to add a 20-bit immediate value to the current Program Counter (PC) and store the result in a register.
+
+### Breakdown of the `auipc` Instruction:
+The `auipc` instruction has the following format:
+```
+imm[31:12] | rd    | opcode
+```
+
+Where:
+- **Opcode** for `auipc` is `0010111` (7 bits).
+- **rd** is the destination register where the result is stored. In this case, `rd` is `a5`, which corresponds to register `x15`. So, `rd = 15`, which is `01111` in binary (5 bits).
+- **Immediate** is a 20-bit value. In this case, the immediate value is `0xffff0`, which is `1048560` in decimal. We need to represent this as a 20-bit signed value.
+
+### Encoding the Immediate:
+The immediate value is `0xffff0`. In binary, `0xffff0` is represented as:
+```
+0000 1111 1111 1111 0000
+```
+
+We can split this immediate value into two parts:
+- **imm[31:12]**: `00001111111111111111` (upper 20 bits).
+- **rd**: `a5` corresponds to `x15`, which is `01111` in binary (5 bits).
+- **opcode**: `0010111` (7 bits for `auipc`).
+
+### Final Instruction Encoding:
+Now, we can assemble the instruction with the fields:
+
+```
+| imm[31:12]          | rd    | opcode |
+| 00001111111111111111 | 01111 | 0010111 |
+```
+
+This results in the following 32-bit binary encoding:
+
+```
+00001111111111111111 01111 0010111
+```
+
+### Final 32-bit Machine Code:
+Converting the binary encoding to hexadecimal:
+
+```
+0000 1111 1111 1111 1111 0111 0010 1111
+```
+
+This results in the machine code:
+
+```
+0x0fff5073
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `auipc a5, 0xffff0` is **`0x0fff5073`**.
+
+<h3> 14. addi a5,a5,-224</h3>
+
+
+The instruction `addi a5, a5, -224` is an **I-type** instruction in RISC-V. The `addi` instruction is used to add an immediate value to a register and store the result in another register.
+
+### Breakdown of the `addi` Instruction:
+The `addi` instruction format is:
+
+```
+imm[11:0] | rs1 | funct3 | rd | opcode
+```
+
+Where:
+- **Opcode** for `addi` is `0010011` (7 bits).
+- **`rs1`** is the source register, which is `a5`. In RISC-V, `a5` corresponds to register `x15`. So, `rs1 = 15`, which is `01111` in binary (5 bits).
+- **`rd`** is the destination register, which is also `a5`. So, `rd = 15`, which is `01111` in binary (5 bits).
+- **Immediate** is `-224`. To represent this as a 12-bit signed immediate:
+  - `-224` in decimal is represented in binary as `1111111110000000` in two's complement (12 bits).
+
+### Immediate Encoding:
+For `addi a5, a5, -224`, the immediate is `-224`. In two's complement (12-bit) binary:
+```
+-224 = 1111111110000000 (12 bits)
+```
+
+### Putting It All Together:
+Now, we can assemble the 32-bit instruction by combining the fields:
+
+```
+| imm[11:0]       | rs1   | funct3 | rd    | opcode |
+| 1111111110000000 | 01111 | 000    | 01111 | 0010011 |
+```
+
+This gives the following 32-bit binary encoding:
+
+```
+111111111000 01111 000 01111 0010011
+```
+
+### Final 32-bit Machine Code:
+Converting the binary encoding to hexadecimal:
+
+```
+1111 1111 1000 0111 100 0111 0010 0111
+```
+
+This results in the machine code:
+
+```
+0xfff30313
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `addi a5, a5, -224` is **`0xfff30313`**.
+
+<h3> 15. beqz a5,100f8 </h3>
+
+The instruction `beqz a5, 100f8` is a **B-type** instruction in RISC-V. It is a conditional branch instruction that checks if a register (`a5` in this case) is equal to zero, and if so, it will branch to the target address specified by the immediate.
+
+### Breakdown of the `beqz a5, 100f8` Instruction:
+The `beqz` (branch if equal to zero) instruction can be interpreted as:
+
+```
+beq a5, x0, 100f8
+```
+
+Which means "if the value in register `a5` is equal to `0`, branch to the address `PC + 100f8`."
+
+### B-Type Instruction Format:
+The format for the **B-type** instruction is:
+
+```
+imm[12] | imm[10:5] | rs2  | rs1  | funct3 | imm[4:1] | imm[11] | opcode
+```
+
+Where:
+- **opcode** for `beq` is `1100011` (7 bits).
+- **funct3** for `beq` is `000` (3 bits).
+- **rs1** is the first register, which is `a5`. In RISC-V, `a5` corresponds to register `x15`. So, `rs1 = 15`, which is `01111` in binary (5 bits).
+- **rs2** is the second register, which is `x0`. So, `rs2 = 0`, which is `00000` in binary (5 bits).
+- **Immediate** is the branch offset, which is `100f8`. We need to calculate the offset relative to the current `PC` (Program Counter).
+
+### Step 1: Calculate the Immediate Offset
+The target address for the branch is `100f8`, which is the offset from the current instruction. Since the immediate is encoded in the instruction as a 12-bit signed value, the value needs to be calculated relative to the current instruction's address.
+
+Assume that the current instruction is at address `PC`. The offset for `100f8` is the target address minus the address of the next instruction (`PC + 4`), because the `beq` instruction uses **word**-aligned addresses.
+
+```
+Immediate = target - (PC + 4)
+```
+
+So, the immediate is:
+```
+100f8 - 4 = 100f4
+```
+
+In hexadecimal, `100f4` is the offset we need to encode. Convert `100f4` into binary:
+```
+100f4 = 0001 0000 0000 1111 0100 (16 bits).
+```
+
+Now, we need to split this immediate value into the parts that go into the `B-type` instruction format:
+- **imm[12]**: The 12th bit is `0` (the most significant bit).
+- **imm[10:5]**: The next 6 bits of the immediate are `000100`.
+- **rs2**: `x0`, so `rs2 = 00000` (5 bits).
+- **rs1**: `a5`, so `rs1 = 01111` (5 bits).
+- **funct3**: `000` (3 bits for `beq`).
+- **imm[4:1]**: The next 4 bits of the immediate are `1110`.
+- **imm[11]**: The 11th bit of the immediate is `0`.
+
+### Step 2: Final Instruction Encoding
+
+Now, we can put all these fields together:
+
+```
+| imm[12] | imm[10:5] | rs2  | rs1   | funct3 | imm[4:1] | imm[11] | opcode |
+|   0     | 000100    | 00000 | 01111 | 000    | 1110     | 0       | 1100011 |
+```
+
+This gives the following 32-bit binary instruction:
+
+```
+0 000100 00000 01111 000 1110 0 1100011
+```
+
+### Final 32-bit Machine Code:
+Now, let's convert the binary encoding to hexadecimal:
+
+```
+0000 0000 0100 0000 0111 1000 0110 0011
+```
+
+This results in the machine code:
+
+```
+0x004f0033
+```
+
+### Conclusion:
+The exact 32-bit instruction code for `beqz a5, 100f8` is **`0x004f0033`**.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    
 
