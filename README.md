@@ -242,9 +242,131 @@ Running in Ofast Option in Riscv Architecture
   ![Debugging -Ofast in SPIKE](https://github.com/user-attachments/assets/fb34b077-ca26-4e5a-93f5-57b8d161febe)
 
 
+</details>
 
+<details>
 
+  <summary> <h3> Task 3: </h3> </summary>
 
+  R,I,S,B,U and J Instruction Types
+
+  In the RISC-V instruction set architecture (ISA), instructions are divided into various types based on their format. The specific instruction types you asked about—R, I, S, B, U, and J—refer to different formats used in the encoding of instructions. Here's a brief overview of each:
+
+### 1. **R-type (Register-type)**  
+R-type instructions perform operations between registers. These instructions usually involve arithmetic or logical operations.
+
+- **Format:**
+  ```
+  | funct7 | rs2 | rs1 | funct3 | rd | opcode |
+  ```
+
+- **Fields:**
+  - `funct7`: 7 bits for a function code, which helps determine the specific operation.
+  - `rs2`: 5 bits for the second source register.
+  - `rs1`: 5 bits for the first source register.
+  - `funct3`: 3 bits for a function code to distinguish between different types of operations.
+  - `rd`: 5 bits for the destination register.
+  - `opcode`: 7 bits specifying the operation (like `add`, `sub`, `and`, `or`).
+
+- **Examples:**
+  - `add`, `sub`, `mul`, `and`, `or`, `sll`, etc.
+
+### 2. **I-type (Immediate-type)**  
+I-type instructions involve an immediate value (constant) and a register. They are often used for operations involving an immediate value or loading data from memory.
+
+- **Format:**
+  ```
+  | imm[11:0] | rs1 | funct3 | rd | opcode |
+  ```
+
+- **Fields:**
+  - `imm[11:0]`: 12-bit immediate value.
+  - `rs1`: 5 bits for the source register.
+  - `funct3`: 3 bits for a function code.
+  - `rd`: 5 bits for the destination register.
+  - `opcode`: 7 bits for the operation code.
+
+- **Examples:**
+  - `addi`, `lw`, `jalr`, `xori`, `slti`, etc.
+
+### 3. **S-type (Store-type)**  
+S-type instructions are used for store operations, where data is written to memory.
+
+- **Format:**
+  ```
+  | imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode |
+  ```
+
+- **Fields:**
+  - `imm[11:5]`: 7 bits of the immediate value (upper part).
+  - `rs2`: 5 bits for the second source register (data to be stored).
+  - `rs1`: 5 bits for the base register (address).
+  - `funct3`: 3 bits for specifying the store operation.
+  - `imm[4:0]`: 5 bits of the immediate value (lower part).
+  - `opcode`: 7 bits for the operation code.
+
+- **Examples:**
+  - `sw`, `sh`, `sb` (store word, store halfword, store byte).
+
+### 4. **B-type (Branch-type)**  
+B-type instructions are used for conditional branching.
+
+- **Format:**
+  ```
+  | imm[12] | imm[10:5] | rs2 | rs1 | funct3 | imm[4:1] | imm[11] | opcode |
+  ```
+
+- **Fields:**
+  - `imm`: Immediate value split into several fields.
+  - `rs2`: 5 bits for the second source register.
+  - `rs1`: 5 bits for the first source register (comparison).
+  - `funct3`: 3 bits for specifying the branch condition.
+  - `opcode`: 7 bits for the operation code.
+
+- **Examples:**
+  - `beq`, `bne`, `blt`, `bge`, `bltu`, `bgeu`.
+
+### 5. **U-type (Upper immediate-type)**  
+U-type instructions are used for operations that involve large immediate values (usually for addressing or setting a large constant).
+
+- **Format:**
+  ```
+  | imm[31:12] | rd | opcode |
+  ```
+
+- **Fields:**
+  - `imm[31:12]`: 20-bit immediate value.
+  - `rd`: 5 bits for the destination register.
+  - `opcode`: 7 bits for the operation code.
+
+- **Examples:**
+  - `lui` (Load Upper Immediate), `auipc` (Add Upper Immediate to PC).
+
+### 6. **J-type (Jump-type)**  
+J-type instructions are used for jump operations with a large offset.
+
+- **Format:**
+  ```
+  | imm[20] | imm[10:1] | imm[11] | imm[19:12] | rd | opcode |
+  ```
+
+- **Fields:**
+  - `imm`: A 21-bit immediate value split into several fields.
+  - `rd`: 5 bits for the destination register (used in `jal`).
+  - `opcode`: 7 bits for the operation code.
+
+- **Examples:**
+  - `jal` (Jump and Link).
+
+### Summary:
+- **R-type**: Register-to-register operations (arithmetic, logical).
+- **I-type**: Immediate operations or load instructions.
+- **S-type**: Store operations (write to memory).
+- **B-type**: Branch (conditional jumps).
+- **U-type**: Large immediate values (addressing or constants).
+- **J-type**: Jump with a large offset.
+
+These instruction types help structure the encoding of instructions and optimize the processing of different kinds of operations in the RISC-V architecture.
 
 
 </details>
