@@ -1604,8 +1604,12 @@ This gives the machine code:
 The exact 32-bit instruction code for `addi gp, gp, -1780` is **`0xf9003033`**.
 
 
+</details>
 
+<details>
+  <summary> <h3> Task 4: </h3> By making use of RISCV Verilog Netlist and Testbench Perform the Simulation and Observe the Waveforms </summary>
 
+  
 </details>
 
 
