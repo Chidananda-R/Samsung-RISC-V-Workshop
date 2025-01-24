@@ -1609,7 +1609,7 @@ The exact 32-bit instruction code for `addi gp, gp, -1780` is **`0xf9003033`**.
 <details>
   <summary> <h3> Task 4: </h3> By making use of RISCV Verilog Netlist and Testbench Perform the Simulation and Observe the Waveforms </summary>
 
-  Steps to perform functional simulation of RISCV
+  <h3>Steps to perform functional simulation of RISCV</h3>
 Create a new directory with your name 
 
 mkdir <your_name>
@@ -1633,9 +1633,71 @@ The GTKWave will be opened and following window will be appeared
 
 ![gtkwave](https://github.com/user-attachments/assets/50c05d2c-ab8e-4f9e-af07-cb27099ea9dc)
 
-Analysig the Output Of Various Commands
+<h3>Analysig the Output Of Various Commands</h3>
 
-Instruction 1:
+<h3>Instruction 1: ADD R6, R2, R1 </h3>
+
+![INS1](https://github.com/user-attachments/assets/f8aee2e3-e67f-44a5-9f77-c10ccee559a0)
+
+<h3>Instruction 2: SUB R7, R1, R2 </h3>
+
+![INS2](https://github.com/user-attachments/assets/0d4688e4-6c86-4b01-aff0-65866dd4babd)
+
+<h3>Instruction 3: AND R8, R1, R3 </h3>
+
+![INS3](https://github.com/user-attachments/assets/2b651166-b64d-4042-a90f-fd7f0fbb85b5)
+
+<h3>Instruction 4: OR R9, R2, R5 </h3>
+
+![INS4](https://github.com/user-attachments/assets/434be17c-a029-4b8e-b1f0-1cb8706f1c22)
+
+<h3>Instruction 5: XOR R10, R1, R4 </h3>
+
+![INS5](https://github.com/user-attachments/assets/5cd0500e-7f3a-40ff-b93a-580e48d6e969)
+
+<h3>Instruction 6: SLT R1, R2, R4 </h3>
+
+![INS6](https://github.com/user-attachments/assets/bface442-32bb-4169-950f-0987ec7790b7)
+
+<h3>Instruction 7: ADDI R12, R4, 5 </h3>
+
+![INS7](https://github.com/user-attachments/assets/ffb039b0-b838-4366-bdd1-a16c47e2077a)
+
+<h3>Instruction 8: BEQ R0, R0, 15 </h3>
+
+![INS8](https://github.com/user-attachments/assets/62baf68a-5590-468c-b433-928ad31b565f)
+
+<h3>Instruction 9: BNE R0, R1, 20 </h3>
+
+![INS9](https://github.com/user-attachments/assets/5dc541a5-30b7-4aa5-93c5-beb720d96ffc)
+
+<h3>Instruction 10: SLL R15, R1, R2</h3>
+
+![INS10](https://github.com/user-attachments/assets/11cddcf9-2880-499d-8139-d2c4504255f8)
+
+<h3>All Instructions </h3>
+
+![All Instructions](https://github.com/user-attachments/assets/b0c8dc02-4e89-47ee-a092-6ef4e9266265)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
