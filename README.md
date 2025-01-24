@@ -1609,6 +1609,31 @@ The exact 32-bit instruction code for `addi gp, gp, -1780` is **`0xf9003033`**.
 <details>
   <summary> <h3> Task 4: </h3> By making use of RISCV Verilog Netlist and Testbench Perform the Simulation and Observe the Waveforms </summary>
 
+  Steps to perform functional simulation of RISCV
+Create a new directory with your name mkdir <your_name>
+
+Create two files by using touch command as chidanand_rv32i.v and chidanand_rv32i_tb.v
+
+Copy the code from the reference github repo and paste it in your verilog and testbench files
+
+To run and simulate the verilog code, enter the following command:
+
+$ iverilog -o chidanand_rv32i chidanand_rv32i.v chidanand_rv32i_tb.v
+$ ./chidanand_rv32i
+To see the simulation waveform in GTKWave, enter the following command:
+
+$ gtkwave chidanand_rv32i.vcd
+The GTKWave will be opened and following window will be appeared
+
+![gtkwave](https://github.com/user-attachments/assets/50c05d2c-ab8e-4f9e-af07-cb27099ea9dc)
+
+Analysig the Output Of Various Commands
+
+Instruction 1:
+
+
+
+
   
 </details>
 
