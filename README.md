@@ -1623,6 +1623,7 @@ Copy the code from the reference github repo and paste it in your verilog and te
 To run and simulate the verilog code, enter the following command:
 
 $ iverilog -o chidanand_rv32i chidanand_rv32i.v chidanand_rv32i_tb.v
+
 $ ./chidanand_rv32i
 
 To see the simulation waveform in GTKWave, enter the following command:
