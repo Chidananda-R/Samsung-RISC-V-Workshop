@@ -1684,7 +1684,7 @@ The GTKWave will be opened and following window will be appeared
 </details>
 
 <details>
-  <summary> <h3> Task 5: Documentation Of The Project </h3> </summary>
+  <summary> <h3> Task 5: </h3>  Documentation Of The Project </summary>
 
   Using the **VSD Squadron Mini**, a RISC-V-based SoC development kit, for creating a locking system is an interesting and innovative project. It will help you explore both hardware and software aspects of RISC-V architecture and system design. Below, I’ll outline a potential project plan and key components to get started with your locking system using this platform.
 
@@ -1917,7 +1917,7 @@ This schematic is the basic framework for wiring the VSD Squadron Mini to the co
 </details>
 
 <details>
-  <summary> <h3> Task 6: Application Demo </h3> </summary>
+  <summary> <h3> Task 6: </h3> Application Demo </summary>
 
   <h3> Code: </h3>
 
