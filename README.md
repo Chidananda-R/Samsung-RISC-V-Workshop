@@ -1680,32 +1680,688 @@ The GTKWave will be opened and following window will be appeared
 
 ![All Instructions](https://github.com/user-attachments/assets/b0c8dc02-4e89-47ee-a092-6ef4e9266265)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+ 
 </details>
 
+<details>
+  <summary> <h3> Task 5: Documentation Of The Project </h3> </summary>
+
+  Using the **VSD Squadron Mini**, a RISC-V-based SoC development kit, for creating a locking system is an interesting and innovative project. It will help you explore both hardware and software aspects of RISC-V architecture and system design. Below, I’ll outline a potential project plan and key components to get started with your locking system using this platform.
+
+### **Project Overview**
+The locking system will allow users to control the locking mechanism of a door or secure device using a RISC-V-based microcontroller (such as VSD Squadron Mini). The system will use a combination of physical (hardware) components like a solenoid lock or servo motor and software running on the RISC-V SoC to control access.
+
+---
+
+### **Key Components Required**
+1. **VSD Squadron Mini (RISC-V-based SoC Development Kit)**: The development kit you’ll use for the system’s brain. It typically comes with basic peripherals (GPIO pins, UART, SPI, etc.).
+   
+2. **Solenoid Lock / Servo Motor**: This will act as the locking mechanism that the system will control. A solenoid lock is typically powered via DC voltage and activated to lock or unlock the door.
+   
+3. **Keypad or RFID Reader**: For user input to authenticate access. You can use a numeric keypad or an RFID reader to enter a password or scan a tag.
+   
+4. **Power Supply**: Ensure a proper power supply for both the VSD Squadron Mini and the locking mechanism. Solenoid locks usually need a 12V power supply, while the development kit will need 5V or 3.3V depending on the configuration.
+
+5. **LEDs and Buzzer**: For visual and auditory feedback (e.g., green for unlocked, red for locked, or buzzer for incorrect entry).
+
+6. **Wires and Breadboard**: To prototype and connect components.
+
+7. **Optional: Wi-Fi or Bluetooth Module**: To allow remote access via a smartphone or web application (e.g., unlocking from a distance).
+
+---
+
+### **Design Overview**
+1. **Input Mechanism**:
+   - **Keypad or RFID**: The user will interact with the system through either a numeric keypad or RFID card. The input will be used to verify user access.
+   - **Authentication**: The entered password or RFID tag will be compared against a stored key (password or tag ID) for authentication.
+   
+2. **Control Unit (VSD Squadron Mini)**:
+   - The RISC-V SoC (Squadron Mini) will process the input and decide whether to activate the locking mechanism.
+   - The program will be written in C or Assembly, with the SoC's GPIO pins controlling the output to the locking mechanism.
+
+3. **Locking Mechanism (Solenoid or Servo Motor)**:
+   - Based on authentication, the control unit will send a signal to either a solenoid or servo to lock/unlock the mechanism. The signal can be a high or low voltage depending on the type of locking device.
+
+4. **Feedback System**:
+   - **LEDs**: Green LED for successful unlocking and red LED for failed attempts.
+   - **Buzzer**: Used to notify incorrect password or access attempts.
+
+---
+
+### **Software Development**
+1. **GPIO Control**:
+   - Use the **GPIO pins** of the VSD Squadron Mini to control the solenoid lock or servo motor.
+   - Write code to toggle the GPIO pins to power the lock (e.g., send HIGH signal to activate solenoid or servo).
+   
+2. **Authentication Logic**:
+   - Create an array of valid passwords or RFID tags.
+   - When input is received (from keypad or RFID), compare it against the stored credentials.
+   - If valid, unlock the system; otherwise, deny access.
+
+3. **Security Features**:
+   - Implement a **timeout** to prevent brute force attacks (e.g., disable access for 30 seconds after 3 incorrect attempts).
+   - Log every event (successful/failed access attempts) to a serial console or SD card for later review.
+
+4. **System State Machine**:
+   - Design a simple state machine with states like "Idle", "Waiting for Input", "Unlocking", "Locked", and "Error". This allows the system to transition between different modes depending on user interaction.
+
+---
+
+### **Steps to Build the Locking System**
+1. **Hardware Setup**:
+   - Set up the VSD Squadron Mini on a breadboard.
+   - Connect the input devices (keypad or RFID) to the GPIO pins of the development board.
+   - Wire up the solenoid lock or servo motor to the GPIO pins.
+   - Connect the power supply to both the development kit and the locking mechanism.
+
+2. **Software Development**:
+   - Write code to initialize GPIO pins, handle keypad/RFID input, and control the lock.
+   - Implement authentication checks in software.
+   - Add state transitions and feedback via LEDs and buzzer.
+
+3. **Testing**:
+   - Test the system by entering correct and incorrect passwords.
+   - Monitor the LEDs and buzzer for feedback.
+   - Ensure the lock operates as expected.
+
+---
+
+### **Advanced Features (Optional)**
+1. **Wireless Control**: Use an additional wireless module (like Wi-Fi or Bluetooth) to control the lock remotely from a smartphone or web interface.
+   
+2. **Logging and Monitoring**: Save logs of access attempts to an SD card, and use an LCD screen to display status messages (locked/unlocked, access attempt history).
+
+3. **User Management**: Implement user registration and removal from the system, allowing dynamic password or RFID management.
+
+---
+
+
+### **Conclusion**
+This project will give you hands-on experience with the RISC-V SoC, as well as knowledge about hardware interfaces, authentication systems, and control mechanisms. The VSD Squadron Mini provides flexibility, and you can scale the system with additional features like wireless control and logging.
+
+
+
+<h3> Circuit Diagram :</h3>
+
+
+Creating a circuit diagram for the **locking system using the VSD Squadron Mini** (RISC-V-based SoC) involves connecting several key components, including the **keypad**, **solenoid lock or servo motor**, **LEDs**, **buzzer**, and **power supply**.
+
+I'll break down the components and their connections, followed by a basic schematic for this project.
+
+---
+
+### **Key Components and Connections**
+
+1. **VSD Squadron Mini (RISC-V SoC)**:
+   - **GPIO Pins**: To connect and control external components such as the keypad, lock, LEDs, and buzzer.
+   - **Power Supply**: The Squadron Mini typically runs on 3.3V or 5V depending on its model.
+
+2. **Keypad**:
+   - **Rows and Columns**: Connect the keypad's row and column pins to several GPIO pins on the Squadron Mini to detect user input.
+
+3. **Solenoid Lock / Servo Motor**:
+   - **Power (12V)**: The solenoid lock typically runs on 12V.
+   - **Control Pin**: A GPIO pin (configured as output) will send a HIGH/LOW signal to activate the lock.
+   - If using a **servo motor**, it would typically require a 5V power supply, and the control is sent through a GPIO pin.
+
+4. **LEDs**:
+   - **Green LED**: Indicates the system is unlocked (connected to a GPIO pin).
+   - **Red LED**: Indicates an incorrect password or system failure (connected to a different GPIO pin).
+   - Both LEDs will have current-limiting resistors (e.g., 220Ω) to prevent excessive current.
+
+5. **Buzzer**:
+   - **Power Supply**: The buzzer typically operates at 5V.
+   - **Control Pin**: A GPIO pin will control whether the buzzer is on or off.
+
+6. **Power Supply**:
+   - **Squadron Mini Power**: 3.3V or 5V (check the specific model's requirement).
+   - **Lock Power**: Typically 12V for the solenoid or servo motor, which may require a separate power source.
+
+---
+
+### **Basic Circuit Schematic**
+
+Here is the outline for a **basic schematic**:
+
+1. **VSD Squadron Mini (RISC-V SoC)**:
+   - **GPIO Pins**:
+     - **Pin for Keypad Rows/Columns**: Connect to the rows and columns of the keypad.
+     - **Pin for Solenoid Lock / Servo Motor**: Connect to the control pin for the solenoid or servo motor.
+     - **Pin for Green LED**: Connect to an LED with a resistor to indicate successful authentication.
+     - **Pin for Red LED**: Connect to an LED with a resistor to indicate failed authentication.
+     - **Pin for Buzzer**: Connect to the buzzer for feedback on failed attempts.
+   
+2. **Keypad**:
+   - **Rows/Columns**: Connect each row and column of the keypad to individual GPIO pins on the Squadron Mini.
+
+3. **Solenoid Lock** (or Servo Motor):
+   - **12V Power Supply**: The solenoid lock will be connected to the 12V power source (separate from the Squadron Mini's power supply).
+   - **Control Pin**: The GPIO pin from the Squadron Mini will control the lock (either directly for a solenoid or via PWM for a servo).
+
+4. **LEDs**:
+   - **Green LED**: Anode to the GPIO pin, cathode to ground via a 220Ω resistor.
+   - **Red LED**: Anode to the GPIO pin, cathode to ground via a 220Ω resistor.
+
+5. **Buzzer**:
+   - **Buzzer**: One terminal to a GPIO pin, the other to ground. If needed, a transistor (like an NPN transistor) can be used to drive higher current for the buzzer.
+
+6. **Power Supply**:
+   - **Squadron Mini**: Power from a 5V supply (or 3.3V, depending on the model).
+   - **Lock Mechanism**: Use a 12V power supply for the solenoid lock or servo motor. Ensure the lock and the SoC share a common ground.
+
+---
+
+### ** Circuit Diagram (Text-based Description)**
+
+```plaintext
+      VSD Squadron Mini (RISC-V SoC)
+  +----------------------------+
+  |                            |
+  |   GPIO Pins (for Keypad)   |<--> Keypad Rows and Columns
+  |   GPIO Pin (for Lock)      |<--> Solenoid Lock (controlled by 12V)
+  |   GPIO Pin (Green LED)     |<--> Green LED (with 220Ω resistor)
+  |   GPIO Pin (Red LED)       |<--> Red LED (with 220Ω resistor)
+  |   GPIO Pin (Buzzer)        |<--> Buzzer (controlled by GPIO pin)
+  |                            |
+  +----------------------------+
+
+    +---------+----------------+
+    |         |                |
+   Power     Keypad            Lock/Servo
+   Supply    (5V or 3.3V)      (12V for solenoid)
+   (5V or    +-----------------+-------------------+
+   3.3V)     |  Keypad         |      Solenoid/    |
+             |  (Rows/Columns) |      Servo Control|
+             +-----------------+-------------------+
+
+   +------------+
+   | Green LED  |<--> Resistor (220Ω) <--> GPIO Pin (success)
+   +------------+
+
+   +------------+
+   | Red LED    |<--> Resistor (220Ω) <--> GPIO Pin (failure)
+   +------------+
+
+   +-----------+
+   | Buzzer    |<--> GPIO Pin (failure feedback)
+   +-----------+
+```
+
+---
+
+### **Notes on Connections**:
+
+- **Power Supply for Lock**: 
+  - The **12V power supply** for the solenoid lock or servo should be kept separate from the Squadron Mini's power supply. You should use a **common ground** between the lock and the Squadron Mini.
+  - If you use a **servo motor**, it typically works on 5V, so you may need to adjust accordingly. A **PWM** signal from the GPIO will control the servo’s position (locking/unlocking).
+
+- **Keypad**:
+  - The keypad uses a matrix of rows and columns. Connect each row and column pin to individual GPIOs on the Squadron Mini. When a key is pressed, it will create a connection between the respective row and column.
+
+- **Solenoid/Servo Control**:
+  - A GPIO pin will control the **solenoid or servo** directly (or via a **transistor** if more current is required).
+  - For a **servo motor**, you will use a **PWM signal** to control the rotation of the servo, which determines whether the door is locked or unlocked.
+
+- **LEDs**:
+  - Use a **220Ω resistor** to limit current through the LEDs and prevent burning them out. The anode of the LED connects to the GPIO pin, and the cathode connects to the ground via the resistor.
+
+- **Buzzer**:
+  - The buzzer will sound when feedback is needed (for example, incorrect password entry). You can control it through a **GPIO pin**, turning it on/off as needed.
+
+---
+
+### **Conclusion**:
+This schematic is the basic framework for wiring the VSD Squadron Mini to the components required for the locking system. You’ll connect the input components (keypad, RFID) and output components (LEDs, lock, buzzer) to the appropriate GPIO pins on the RISC-V board. The power for the lock and the microcontroller should be sourced separately but share a common ground. 
+
+
+</details>
+
+<details>
+  <summary> <h3> Task 6: Application Demo </h3> </summary>
+
+  <h3> Code: </h3>
+
+  #include "gpio.h"
+#include "keypad.h"  // Assuming a keypad library
+#include "lock_control.h"  // Custom code to control solenoid/servo
+
+#define PASSWORD "1234"  // Example password
+
+void main() {
+    // Initialize peripherals
+    keypad_init();
+    gpio_init();
+    
+    while (1) {
+        // Wait for user input
+        char enteredPassword[4] = {0};
+        if (keypad_get_input(enteredPassword)) {
+            if (check_password(enteredPassword)) {
+                unlock_door();  // Unlock the door
+                gpio_set(GPIO_LED_GREEN, HIGH);
+            } else {
+                lock_door();  // Keep door locked
+                gpio_set(GPIO_LED_RED, HIGH);
+                beep_buzzer();
+            }
+        }
+    }
+}
+
+bool check_password(char* entered) {
+    return strcmp(entered, PASSWORD) == 0;
+}
+
+void unlock_door() {
+    gpio_set(GPIO_LOCK, HIGH);  // Trigger solenoid or servo to unlock
+}
+
+void lock_door() {
+    gpio_set(GPIO_LOCK, LOW);  // Trigger solenoid or servo to lock
+}
+
+
+
+
+<h3> Explanation Of The Code: </h3>
+
+
+
+Certainly! Let's break down the code piece by piece to understand what each part does.
+
+### **1. Includes and Definitions**
+
+```c
+#include "gpio.h"
+#include "keypad.h"  // Assuming a keypad library
+#include "lock_control.h"  // Custom code to control solenoid/servo
+
+#define PASSWORD "1234"  // Example password
+```
+
+- **gpio.h**: This header file would contain the functions required to interact with the GPIO pins on the VSD Squadron Mini, such as setting pin states (HIGH/LOW) to control external components (like LEDs, locks).
+  
+- **keypad.h**: This file would provide functions to interact with the keypad. The keypad will allow users to input the password or PIN. We assume a library exists for managing keypad interactions.
+  
+- **lock_control.h**: This is a custom header for controlling the lock (solenoid or servo motor). It may contain functions like `unlock_door()` and `lock_door()` to control the lock's state.
+
+- **`#define PASSWORD "1234"`**: This is a constant definition that stores the password. The system will compare the entered input with this predefined password.
+
+---
+
+### **2. Main Program Structure**
+
+```c
+void main() {
+    // Initialize peripherals
+    keypad_init();
+    gpio_init();
+    
+    while (1) {
+        // Wait for user input
+        char enteredPassword[4] = {0};
+        if (keypad_get_input(enteredPassword)) {
+            if (check_password(enteredPassword)) {
+                unlock_door();  // Unlock the door
+                gpio_set(GPIO_LED_GREEN, HIGH);
+            } else {
+                lock_door();  // Keep door locked
+                gpio_set(GPIO_LED_RED, HIGH);
+                beep_buzzer();
+            }
+        }
+    }
+}
+```
+
+- **`void main()`**: This is the main function where the program starts execution. 
+
+- **`keypad_init()`**: This initializes the keypad hardware, setting up the necessary pins on the SoC to receive input from the keypad (e.g., scanning rows and columns).
+  
+- **`gpio_init()`**: This initializes the GPIO pins for other devices like LEDs, buzzer, and lock control. It configures the pins for output or input as needed.
+
+#### The Main Loop:
+- **`while (1)`**: This creates an infinite loop where the system continuously checks for input from the user. It’s the core of the program, running until the system is powered off or reset.
+
+- **`char enteredPassword[4] = {0};`**: This array will store the user's input (assuming a 4-digit password).
+
+- **`keypad_get_input(enteredPassword)`**: This function (assumed to be implemented in `keypad.h`) waits for the user to input a password on the keypad. It returns `true` when a valid input is entered and stores the input in `enteredPassword`.
+
+---
+
+### **3. Authentication Check**
+
+```c
+if (check_password(enteredPassword)) {
+    unlock_door();  // Unlock the door
+    gpio_set(GPIO_LED_GREEN, HIGH);
+} else {
+    lock_door();  // Keep door locked
+    gpio_set(GPIO_LED_RED, HIGH);
+    beep_buzzer();
+}
+```
+
+- **`check_password(enteredPassword)`**: This function checks if the entered password matches the predefined password (`"1234"`). It returns `true` if the passwords match, and `false` if they don’t.
+  
+  - **If password is correct**:
+    - **`unlock_door()`**: If the password matches, this function is called to unlock the door. It sends a signal to the locking mechanism (solenoid or servo) to change state.
+    - **`gpio_set(GPIO_LED_GREEN, HIGH)`**: Turns on the green LED (indicating successful authentication and door unlocked).
+  
+  - **If password is incorrect**:
+    - **`lock_door()`**: If the password doesn’t match, this function keeps the door locked.
+    - **`gpio_set(GPIO_LED_RED, HIGH)`**: Turns on the red LED (indicating failure or incorrect password).
+    - **`beep_buzzer()`**: Activates the buzzer to provide an audible signal that the authentication failed (incorrect password).
+
+---
+
+### **4. Supporting Functions**
+
+#### **check_password()**
+```c
+bool check_password(char* entered) {
+    return strcmp(entered, PASSWORD) == 0;
+}
+```
+- **`check_password()`**: This function compares the `entered` password with the predefined `PASSWORD` ("1234").
+  - **`strcmp()`**: It’s a standard C library function that compares two strings. It returns `0` if the strings are identical.
+  - If the password matches, the function returns `true`, and the door is unlocked.
+
+#### **unlock_door()**
+```c
+void unlock_door() {
+    gpio_set(GPIO_LOCK, HIGH);  // Trigger solenoid or servo to unlock
+}
+```
+- **`unlock_door()`**: This function controls the lock by sending a signal to the corresponding GPIO pin (`GPIO_LOCK`). It sets the pin high (`HIGH`), which could activate a solenoid or servo motor to unlock the door.
+
+#### **lock_door()**
+```c
+void lock_door() {
+    gpio_set(GPIO_LOCK, LOW);  // Trigger solenoid or servo to lock
+}
+```
+- **`lock_door()`**: This function sets the GPIO pin (`GPIO_LOCK`) to low (`LOW`), which would lock the door by deactivating the solenoid or moving the servo back to the locked position.
+
+---
+
+#### **Additional Functions**
+- **`gpio_set()`**: A function (assumed to be in `gpio.h`) that allows you to set a GPIO pin to a certain state (`HIGH` or `LOW`).
+  - `HIGH` could mean powering a solenoid, turning on LEDs, or triggering the buzzer.
+  - `LOW` would deactivate those components.
+
+- **`beep_buzzer()`**: This is a simple function that could toggle a GPIO pin connected to a buzzer to sound off for a brief period, signaling a failure or incorrect access attempt.
+
+---
+
+### **Summary of Operation**
+1. **Keypad Input**: The system waits for the user to enter a 4-digit password via the keypad.
+2. **Password Check**: The system compares the entered password with the predefined password (`"1234"`).
+   - If correct:
+     - The door unlocks.
+     - Green LED lights up, and the system indicates success.
+   - If incorrect:
+     - The door remains locked.
+     - Red LED lights up, and a buzzer sounds to alert the user.
+
+---
+
+### **Next Steps**
+- The basic structure is ready. You can implement this system on the VSD Squadron Mini, connecting it to the physical hardware (keypad, lock, LEDs, buzzer).
+- Modify the code to handle edge cases, such as:
+  - Timeout after several failed attempts.
+  - Storing a dynamic password or RFID tag for more advanced authentication.
+  - Logging failed attempts.
+
+This design can be extended with more sophisticated features, such as integrating a wireless module for remote access or adding a graphical user interface (GUI) for easier management of users.
+
+
+
+<h3> Key Achievements </h3>
+
+
+
+
+The **locking system project** using the **VSD Squadron Mini (RISC-V-based SoC development kit)** would result in several notable achievements, both in terms of hardware and software. Below are the key achievements that can be derived from completing this project:
+
+---
+
+### **1. Understanding RISC-V Architecture and Embedded Systems**
+- **Hands-on Experience with RISC-V**: This project provides practical experience working with RISC-V, a modern open-source processor architecture. You’ll learn how to interface with low-level hardware features and manage peripherals using RISC-V-based microcontrollers, which is becoming an increasingly important skill in embedded systems.
+  
+- **Embedded Software Development**: Writing software for an embedded system allows you to gain experience with real-time programming, managing hardware components (GPIO, serial communication, etc.), and implementing low-level device control. You'll be able to develop an appreciation for efficient code execution and resource management in constrained environments.
+
+---
+
+### **2. Hardware Integration and System Design**
+- **GPIO Management**: You'll successfully interface and control various hardware components (keypad, solenoid lock, servo motor, LEDs, and buzzer) using GPIO pins. This helps develop an understanding of how microcontrollers interact with external devices through digital input/output.
+  
+- **Designing the Locking Mechanism**: You’ll design a reliable, physical locking system that uses a solenoid or servo to control access. This involves wiring and controlling power to mechanical components based on input signals.
+  
+- **Sensor and Actuator Control**: The system will integrate sensors (keypad/RFID) and actuators (solenoid or servo), enabling you to control access to physical spaces based on user input. Learning how to control these components through software and hardware is a key achievement.
+
+---
+
+### **3. User Authentication System**
+- **Security Features**: By implementing a basic user authentication mechanism, such as password or RFID-based verification, you create a functional security system. This showcases your ability to design and implement security features at the hardware level.
+  
+- **Authentication Logic Implementation**: You’ll develop the logic to compare entered passwords with stored ones and activate/deactivate the lock accordingly. This is a practical example of designing access control logic, which is widely used in many real-world applications (e.g., smart doors, secure devices).
+
+---
+
+### **4. Feedback and Error Handling**
+- **LED Indicators**: You will set up visual feedback using LEDs, providing real-time status updates (locked/unlocked, success/failure) to users. This teaches how to give feedback to users through simple yet effective visual cues.
+  
+- **Auditory Feedback**: Using a buzzer to notify the user about incorrect passwords or system states teaches how to provide feedback in a more accessible way, improving usability.
+
+- **Error Handling and Timeout**: By implementing basic error handling (e.g., limiting incorrect attempts), you learn to enhance the robustness and security of the system, helping prevent brute force attacks.
+
+---
+
+### **5. Practical Application of Software Design**
+- **State Machine Implementation**: You will implement a simple state machine to manage different system states like "idle", "waiting for input", "locked", "unlocked", and "error". This helps you design more structured and modular software for managing various conditions and transitions.
+
+- **Efficient Control Logic**: Designing efficient code to handle simultaneous inputs, locking/unlocking operations, and feedback generation helps improve your skills in writing performant and reliable embedded software.
+
+---
+
+### **6. Scalability and Expandability**
+- **Modular Design**: The project is designed in a way that you can extend it in the future, such as adding features like:
+  - **Wireless Access Control**: Implementing Wi-Fi or Bluetooth for remote access (e.g., using a smartphone app to unlock the door).
+  - **Multiple User Support**: Allowing different users to have distinct passwords or RFID tags for access control.
+  - **Logging and Monitoring**: Storing access logs on an SD card or sending logs over serial communication for monitoring and auditing.
+  
+  This modularity means the basic framework is scalable and adaptable for future improvements.
+
+---
+
+### **7. Debugging and Troubleshooting Skills**
+- **Debugging Hardware-Software Integration**: Working with hardware requires effective debugging skills, especially when hardware doesn't behave as expected. You’ll practice troubleshooting wiring issues, software bugs, and peripheral malfunctions.
+  
+- **Optimization**: During development, you'll focus on ensuring that the system operates efficiently, avoiding unnecessary power consumption or delays in the locking/unlocking process. This teaches resource optimization and the need for low-latency control in embedded systems.
+
+---
+
+### **8. User Interface Design**
+- **Simple but Effective UI**: Designing the user interface (in this case, a keypad or RFID reader and visual indicators like LEDs) provides insight into creating intuitive and responsive user systems. You’ll learn how to make sure the interaction between the system and the user is seamless, which is a critical aspect of user interface design in embedded systems.
+
+---
+
+### **9. Real-World Project Development**
+- **Prototyping and Testing**: The project teaches the process of prototyping, testing, and iterating on a real-world system. You’ll gain a deep understanding of how to move from an idea to a working product and improve it based on feedback and performance metrics.
+  
+- **Documentation and Reporting**: You will also learn how to document your design choices, wiring diagrams, software, and troubleshooting steps. Clear documentation is essential for any real-world development project.
+
+---
+
+### **10. Practical Knowledge of IoT (Internet of Things)**
+- If you decide to add remote control features (via Bluetooth, Wi-Fi, or web-based control), you'll gain knowledge in **IoT** concepts. You would learn how to interface a microcontroller with wireless modules, authenticate users remotely, and create a secure connection for unlocking the door from a distance.
+
+---
+
+### **Conclusion**
+
+Upon completion of this project, you would have achieved:
+- A working, practical locking system based on a RISC-V microcontroller.
+- Hands-on experience in embedded system design and hardware/software integration.
+- A deep understanding of the RISC-V architecture and how to develop software to control real-world devices.
+- Enhanced problem-solving, debugging, and system design skills.
+  
+Moreover, you'll have the foundation to explore more complex systems, including IoT-based security solutions, wireless communication, or advanced user authentication techniques. This project demonstrates your ability to bridge hardware and software, and it serves as a fantastic addition to a portfolio or as a proof of concept for further developments in security and embedded systems.
+
+
+
+<h3> Future Improvements to the Project </h3>
+
+
+Here are several potential **future improvements and enhancements** for your **locking system project** using the VSD Squadron Mini (RISC-V-based SoC). These upgrades can enhance both the functionality and security of the system.
+
+---
+
+### **1. Enhanced Security Features**
+
+#### **a. Multiple Passwords or User Accounts**
+- **Current System**: The system only supports one fixed password ("1234").
+- **Improvement**: Allow multiple users to store their individual passwords or PINs, and dynamically authenticate them. This could be done by storing passwords in **EEPROM** or an external memory device (like an SD card).
+  
+#### **b. Biometric Authentication (Fingerprint/Face Recognition)**
+- **Current System**: The system relies on a simple keypad input.
+- **Improvement**: Integrate a **fingerprint scanner** or **camera** to perform biometric authentication for additional security. This could be accomplished using a **fingerprint sensor module** or a **camera module** combined with a face-recognition algorithm.
+
+#### **c. Two-Factor Authentication**
+- **Current System**: Only one layer of authentication (password/PIN) is used.
+- **Improvement**: Implement **two-factor authentication** (2FA) for higher security. For instance, after entering the correct password, the system could require a one-time password (OTP) sent via SMS, email, or a mobile app.
+
+#### **d. Anti-Tamper Mechanism**
+- **Improvement**: Add a **tamper detection** feature to the locking system. If the system detects unauthorized attempts to physically tamper with the keypad or the lock, it could trigger an alarm (buzzer) or send a notification. You could use **motion sensors** or **accelerometers** for detecting physical interference.
+
+---
+
+### **2. Wireless Connectivity**
+
+#### **a. Remote Access (Bluetooth/Wi-Fi)**
+- **Current System**: The system is standalone with physical keypads for input.
+- **Improvement**: Add **wireless communication** such as **Bluetooth** or **Wi-Fi**. This would enable remote access and control via a **smartphone app** or **web interface**.
+  - **Bluetooth**: Use a Bluetooth module (like **HC-05/06**) to control the lock via a phone app.
+  - **Wi-Fi**: Use an **ESP8266** or **ESP32** module to connect to the internet and control the lock remotely via a web interface or smartphone app.
+
+#### **b. IoT Integration**
+- **Improvement**: Make the system part of an **IoT ecosystem**. Integrate it with a home automation platform like **Home Assistant**, **Google Home**, or **Amazon Alexa** for voice-controlled lock management.
+
+#### **c. Mobile App Integration**
+- **Improvement**: Develop a custom mobile app to manage access and monitor the lock status. Features could include:
+  - Lock/unlock remotely.
+  - Monitor failed access attempts and login history.
+  - Grant temporary access for guests.
+
+---
+
+### **3. Advanced User Interface (UI)**
+
+#### **a. Touchscreen Interface**
+- **Current System**: A simple keypad is used for entering the password.
+- **Improvement**: Upgrade to a **touchscreen interface** where users can interact with a graphical user interface (GUI) to input the password, view system status, or even manage user accounts.
+  
+#### **b. Voice Feedback or Commands**
+- **Improvement**: Add **voice feedback** to the system. For example, when the password is entered correctly or incorrectly, the system can speak out loud ("Access Granted" or "Incorrect Password"). You could use a **speech synthesis module** or a connected **smart assistant**.
+
+---
+
+### **4. Logging and Auditing**
+
+#### **a. Access Logs**
+- **Improvement**: Implement a logging system that records all **lock/unlock attempts**. Logs could include:
+  - Date and time of access.
+  - User ID (or name).
+  - Success or failure of the authentication attempt.
+  - Store the logs on an **SD card** or send them to a cloud database.
+  
+#### **b. Event Notifications**
+- **Improvement**: Implement event-based notifications. For example:
+  - **SMS/email alerts** for successful/failed access attempts.
+  - **Push notifications** to a smartphone app.
+  - Integrate with **Telegram Bot** or **IFTTT** for automated notifications.
+
+---
+
+### **5. Power Management**
+
+#### **a. Low Power Modes**
+- **Improvement**: Optimize the power consumption of the system, especially if it is battery-powered. Implement **sleep modes** for the Squadron Mini when idle, waking up only when a user interacts with the keypad or sensor.
+  - Consider using a **low-power microcontroller** or optimizing the existing one.
+  - Use **low-power peripherals** and a **low-power RTC (Real-Time Clock)** if you need to keep track of time while in low-power mode.
+
+#### **b. Backup Power Source**
+- **Improvement**: Implement a **backup power system**, such as a rechargeable **Li-ion battery**, to ensure the system works even during power outages. When power is restored, the battery can recharge.
+
+---
+
+### **6. Enhanced Hardware**
+
+#### **a. Modular Design**
+- **Improvement**: Make the system modular, allowing users to swap out different components. For example:
+  - Different types of locks (servo, solenoid, electronic).
+  - Keypads of varying sizes or security levels.
+  - Different sensor types (RFID, biometric).
+
+#### **b. More Robust Lock Mechanisms**
+- **Improvement**: Implement more advanced **lock types**, such as **biometric fingerprint locks**, **RFID-based locks**, or **keypad locks with dynamic PINs**.
+  - Integrate **motorized locks** for higher security, which can be controlled via GPIO pins or a smart relay.
+
+---
+
+### **7. Cloud Integration**
+
+#### **a. Cloud Storage**
+- **Improvement**: Store access logs, user credentials, and system settings on a cloud platform (e.g., **AWS**, **Google Cloud**, or **Microsoft Azure**).
+  - Allow users to access and modify their credentials or settings remotely via the cloud.
+  - Provide analytics and reporting on access patterns (e.g., peak access times, frequent incorrect password attempts).
+
+#### **b. Cloud-Based User Management**
+- **Improvement**: Manage users and authentication from a centralized cloud-based platform. This allows administrators to remotely manage user permissions and reset passwords without physically accessing the system.
+
+---
+
+### **8. Integration with Smart Home Systems**
+
+#### **a. Smart Home Integration**
+- **Improvement**: Integrate the locking system with smart home devices. For example, when the user enters their home, the door could automatically unlock based on the user’s **location** via a smartphone app or **geofencing**.
+  
+#### **b. Integration with Security Systems**
+- **Improvement**: Integrate with existing security systems, such as **cameras** or **motion sensors**, to enhance security. If an unauthorized access attempt is detected, the system could:
+  - Trigger an alarm.
+  - Send notifications to the user.
+  - Activate cameras to capture footage.
+
+---
+
+### **9. Enhanced User Experience**
+
+#### **a. Voice Recognition**
+- **Improvement**: Implement a **voice recognition system** where users can unlock the door by speaking a predefined phrase or PIN. This would add an extra layer of convenience and security.
+
+#### **b. Customizable User Settings**
+- **Improvement**: Allow users to customize settings, such as:
+  - Configuring the number of failed attempts before locking the system.
+  - Setting up the lock timeout period after the door is unlocked.
+  - Changing the sound and color feedback of the LEDs.
+
+---
+
+### **10. AI and Machine Learning Integration**
+
+#### **a. Predictive Security**
+- **Improvement**: Use **AI/ML algorithms** to analyze access patterns and detect unusual behavior. For example, if an access attempt is made at an unusual time or location, the system could prompt for additional authentication (e.g., an OTP).
+
+#### **b. Adaptive Access Control**
+- **Improvement**: The system could learn from user behavior and adjust its access protocols. For example, if the system detects frequent access by a particular user, it could reduce the time required for authentication.
+
+---
+
+### **Conclusion**
+
+These **future improvements and enhancements** can greatly increase the security, functionality, and convenience of your locking system. By adding features like biometric authentication, remote control, cloud integration, advanced user interfaces, and machine learning, you can transform the system into a **next-generation smart security solution** that is both highly secure and easy to use.
+</details>
 
 
 
