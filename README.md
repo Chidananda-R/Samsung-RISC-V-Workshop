@@ -2359,6 +2359,7 @@ Here are several potential **future improvements and enhancements** for your **l
 - **Improvement**: The system could learn from user behavior and adjust its access protocols. For example, if the system detects frequent access by a particular user, it could reduce the time required for authentication.
 
 ---
+![WhatsApp Image 2025-02-17 at 22 44 15_f853fac9](https://github.com/user-attachments/assets/63e669a9-5a67-4295-9d9f-d46d72b46277)
 
 ### **Conclusion**
 
