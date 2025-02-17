@@ -1778,10 +1778,6 @@ The locking system will allow users to control the locking mechanism of a door o
 ---
 
 
-### **Conclusion**
-This project will give you hands-on experience with the RISC-V SoC, as well as knowledge about hardware interfaces, authentication systems, and control mechanisms. The VSD Squadron Mini provides flexibility, and you can scale the system with additional features like wireless control and logging.
-
-
 
 <h3> Circuit Diagram :</h3>
 
@@ -1912,8 +1908,6 @@ Here is the outline for a **basic schematic**:
 
 ---
 
-### **Conclusion**:
-This schematic is the basic framework for wiring the VSD Squadron Mini to the components required for the locking system. You’ll connect the input components (keypad, RFID) and output components (LEDs, lock, buzzer) to the appropriate GPIO pins on the RISC-V board. The power for the lock and the microcontroller should be sourced separately but share a common ground. 
 
 
 </details>
@@ -2201,15 +2195,6 @@ The **locking system project** using the **VSD Squadron Mini (RISC-V-based SoC d
 
 ---
 
-### **Conclusion**
-
-Upon completion of this project, you would have achieved:
-- A working, practical locking system based on a RISC-V microcontroller.
-- Hands-on experience in embedded system design and hardware/software integration.
-- A deep understanding of the RISC-V architecture and how to develop software to control real-world devices.
-- Enhanced problem-solving, debugging, and system design skills.
-  
-Moreover, you'll have the foundation to explore more complex systems, including IoT-based security solutions, wireless communication, or advanced user authentication techniques. This project demonstrates your ability to bridge hardware and software, and it serves as a fantastic addition to a portfolio or as a proof of concept for further developments in security and embedded systems.
 
 
 
@@ -2365,6 +2350,16 @@ Here are several potential **future improvements and enhancements** for your **l
 ### **Conclusion**
 
 These **future improvements and enhancements** can greatly increase the security, functionality, and convenience of your locking system. By adding features like biometric authentication, remote control, cloud integration, advanced user interfaces, and machine learning, you can transform the system into a **next-generation smart security solution** that is both highly secure and easy to use.
+
+
+
+Upon completion of this project, you would have achieved:
+- A working, practical locking system based on a RISC-V microcontroller.
+- Hands-on experience in embedded system design and hardware/software integration.
+- A deep understanding of the RISC-V architecture and how to develop software to control real-world devices.
+- Enhanced problem-solving, debugging, and system design skills.
+  
+Moreover, you'll have the foundation to explore more complex systems, including IoT-based security solutions, wireless communication, or advanced user authentication techniques. This project demonstrates your ability to bridge hardware and software, and it serves as a fantastic addition to a portfolio or as a proof of concept for further developments in security and embedded systems.
 </details>
 
 
