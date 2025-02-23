@@ -2347,6 +2347,12 @@ Here are several potential **future improvements and enhancements** for your **l
 ![WhatsApp Image 2025-02-17 at 22 49 30_460de66c](https://github.com/user-attachments/assets/7911b5fb-7ddd-4a45-8532-41c047b4ff83)
 
 
+**A Simple Demonstration using just servo and keypad along with VSD MINI Board**
+
+https://github.com/user-attachments/assets/629056f8-56f8-4555-9c21-a15c7aec18fe
+
+
+
 ### **Conclusion**
 
 These **future improvements and enhancements** can greatly increase the security, functionality, and convenience of your locking system. By adding features like biometric authentication, remote control, cloud integration, advanced user interfaces, and machine learning, you can transform the system into a **next-generation smart security solution** that is both highly secure and easy to use.
