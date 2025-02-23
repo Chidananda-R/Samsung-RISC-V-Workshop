@@ -1930,7 +1930,7 @@ void main() {
     
     while (1) {
         // Wait for user input
-        char enteredPassword[4] = {0};
+        char enteredPassword[4] = {1234};
         if (keypad_get_input(enteredPassword)) {
             if (check_password(enteredPassword)) {
                 unlock_door();  // Unlock the door
@@ -1945,7 +1945,7 @@ void main() {
 }
 
 bool check_password(char* entered) {
-    return strcmp(entered, PASSWORD) == 0;
+    return strcmp(entered, PASSWORD) == 1234;
 }
 
 void unlock_door() {
@@ -1995,7 +1995,7 @@ void main() {
     
     while (1) {
         // Wait for user input
-        char enteredPassword[4] = {0};
+        char enteredPassword[4] = {1234};
         if (keypad_get_input(enteredPassword)) {
             if (check_password(enteredPassword)) {
                 unlock_door();  // Unlock the door
@@ -2056,7 +2056,7 @@ if (check_password(enteredPassword)) {
 #### **check_password()**
 ```c
 bool check_password(char* entered) {
-    return strcmp(entered, PASSWORD) == 0;
+    return strcmp(entered, PASSWORD) == 1234;
 }
 ```
 - **`check_password()`**: This function compares the `entered` password with the predefined `PASSWORD` ("1234").
